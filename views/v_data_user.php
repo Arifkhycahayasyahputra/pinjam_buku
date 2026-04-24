@@ -43,7 +43,6 @@ $data_pengguna = $pengguna->tampil_data();
 
                 <div class="btn-group">
                     <a href="../controllers/c_pengguna.php?aksi=tambah" class="btn tambah">+ Tambah</a>
-                    <a href="../controllers/c_logout.php" class="btn logout">Logout</a>
                 </div>
 
             </div>

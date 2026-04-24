@@ -1,4 +1,15 @@
 <?php
+session_start();
+if (!isset($_SESSION['role'])) {
+    header("Location: ../index.php");
+    exit;
+}
+
+if ($_SESSION['role'] !== 'admin') {
+    header("Location: v_dasbord_user.php");
+    exit;
+}
+
 include "../models/m_pinjam.php";
 
 $pinjam = new m_pinjam();

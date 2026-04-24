@@ -9,7 +9,7 @@ try {
 
     if ($aksi != "") {
 
-        /* ================= EDIT ================= */
+        
         if ($aksi == "edit") {
             $kode = $_GET['kode_buku'] ?? '';
 
@@ -23,7 +23,7 @@ try {
             exit;
         }
 
-        /* ================= TAMBAH ================= */
+        
         if ($aksi == "tambah" && isset($_POST['nama_buku'])) {
             $nama     = $_POST['nama_buku'];
             $gambar   = $_POST['gambar'] ?? '';
@@ -50,7 +50,6 @@ try {
             exit;
         }
 
-        /* ================= UPDATE ================= */
         if ($aksi == "update" && isset($_POST['kode_buku'])) {
             $kode     = $_POST['kode_buku'];
             $nama     = $_POST['nama_buku'];
@@ -79,7 +78,7 @@ try {
             exit;
         }
 
-        /* ================= HAPUS ================= */
+        
         if ($aksi == "hapus") {
             $kode = $_GET['kode_buku'] ?? '';
 

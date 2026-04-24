@@ -5,6 +5,8 @@ include "../models/m_pengguna.php";
 
 $pengguna = new m_pengguna();
 
+$_SESSION['nama_pengguna'] = $data_user->nama_pengguna;
+
 if (isset($_POST['login'])) {
 
     $username_email = trim($_POST['username_email']);

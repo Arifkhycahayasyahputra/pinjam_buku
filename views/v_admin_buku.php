@@ -41,7 +41,6 @@ $data_buku = $buku->tampil_data();
         <div class="nav-menu">
             <a href="v_dasbord_admin.php" class="btn btn-user">🏠 Kembali Ke Dashboard</a>
             <a href="v_tambah_buku.php" class="btn btn-tambah">+ Tambah Buku</a>
-            <a href="../controllers/c_logout.php" class="btn btn-logout">Logout</a>
         </div>
 
     </div>

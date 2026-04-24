@@ -1,10 +1,20 @@
 <?php
 session_start();
 
+
 if (!isset($_SESSION['role'])) {
     header("Location: ../index.php");
     exit;
 }
+
+
+if ($_SESSION['role'] !== 'user') {
+    header("Location: v_dasbord_admin.php");
+    exit;
+}
+
+
+$nama_user = $_SESSION['nama_pengguna'] ?? 'User';
 ?>
 
 <!DOCTYPE html>
@@ -16,25 +26,26 @@ if (!isset($_SESSION['role'])) {
 </head>
 <body>
 
-<!-- NAVBAR -->
+
 <div class="navbar">
     <div class="menu">
 
         <div class="logo">📚 Perpustakaan</div>
 
         <div class="menu-right">
+           
             <a href="../controllers/c_logout.php">🚪 Logout</a>
         </div>
 
     </div>
 </div>
 
-<!-- CONTENT -->
+
 <div class="container">
 
     <div class="hero">
-        <h1>Selamat Datang 👋</h1>
-        <p>Kelola peminjaman buku dengan mudah, cepat, dan modern melalui sistem perpustakaan digital.</p>
+        <h1>Selamat Datang, <?= htmlspecialchars($nama_user) ?> 👋</h1>
+        <p>peminjaman buku dengan mudah, cepat, dan modern melalui sistem perpustakaan digital.</p>
     </div>
 
     <div class="grid">

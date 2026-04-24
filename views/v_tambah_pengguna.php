@@ -1,3 +1,19 @@
+<?php
+session_start();
+if (!isset($_SESSION['role'])) {
+    header("Location: ../index.php");
+    exit;
+}
+
+if ($_SESSION['role'] !== 'admin') {
+    header("Location: v_dasbord_user.php");
+    exit;
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="id">
 <head>

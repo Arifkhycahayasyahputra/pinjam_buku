@@ -1,7 +1,7 @@
 <?php
 include_once "m_koneksi.php";
 
-class m_riwayat{
+class m_riwayat {
 
     public $koneksi;
 
@@ -57,5 +57,14 @@ class m_riwayat{
         return $data;
     }
 
+    function hapus_data($id_riwayat){
+
+    $id_riwayat = mysqli_real_escape_string($this->koneksi, $id_riwayat);
+
+    $sql = "DELETE FROM riwayat_peminjaman
+            WHERE id_riwayat='$id_riwayat'";
+
+    return mysqli_query($this->koneksi,$sql);
+}
 }
 ?>

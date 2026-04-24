@@ -1,5 +1,15 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['role'])) {
+    header("Location: ../index.php");
+    exit;
+}
+
+if ($_SESSION['role'] !== 'admin') {
+    header("Location: v_dasbord_user.php");
+    exit;
+}
 require_once "../models/m_riwayat.php";
 
 $riwayat = new m_riwayat();
@@ -38,6 +48,7 @@ $data_riwayat = $riwayat->tampil_data();
     <th>Tanggal Pinjam</th>
     <th>Tanggal Kembali</th>
     <th>Jumlah</th>
+    <th>Aksi</th>
 </tr>
 </thead>
 
@@ -53,6 +64,13 @@ $data_riwayat = $riwayat->tampil_data();
     <td><?= $row->tanggal_peminjaman ?></td>
     <td><?= $row->tanggal_pengembalian ?></td>
     <td><?= $row->jumlah_pinjam ?></td>
+    <td>
+        <a href="../controllers/c_riwayat.php?aksi=hapus&id_riwayat=<?= $row->id_riwayat ?>"
+           onclick="return confirm('Yakin ingin menghapus riwayat ini?')"
+           style="background:red;color:white;padding:6px 10px;border-radius:5px;text-decoration:none;">
+           Hapus
+        </a>
+    </td>
 </tr>
 
 <?php endforeach; ?>
@@ -60,7 +78,7 @@ $data_riwayat = $riwayat->tampil_data();
 <?php else: ?>
 
 <tr>
-    <td colspan="6" class="empty">
+    <td colspan="7" class="empty">
         Belum ada riwayat peminjaman
     </td>
 </tr>

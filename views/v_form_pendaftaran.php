@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Daftar Akun Perpustakaan</title>
-<link rel="stylesheet" href="/pinjam_buku/form_pendaftaran.css">
+<link rel="stylesheet" href="/pinjam_buku/asset/form_pendaftaran.css">
+
 </head>
 
 <body>

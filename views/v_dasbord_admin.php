@@ -1,16 +1,30 @@
 <?php
 session_start();
 
+
+if (!isset($_SESSION['role'])) {
+    header("Location: ../index.php");
+    exit;
+}
+
+if ($_SESSION['role'] !== 'admin') {
+    header("Location: v_dasbord_user.php");
+    exit;
+}
+
+
 include "../models/m_dashboard.php";
 
 $dashboard = new m_dashboard();
 
-$total_buku = $dashboard->total_buku();
-$total_user = $dashboard->total_user();
+$total_buku    = $dashboard->total_buku();
+$total_user    = $dashboard->total_user();
 $total_pending = $dashboard->total_pending();
-$total_pinjam = $dashboard->total_pinjam();
+$total_pinjam  = $dashboard->total_pinjam();
 $total_kembali = $dashboard->total_kembali();
 
+
+$nama_admin = $_SESSION['nama_pengguna'] ?? 'Admin';
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +38,7 @@ $total_kembali = $dashboard->total_kembali();
 </head>
 <body>
 
+
 <div class="sidebar">
 
     <h2>📚 Admin</h2>
@@ -32,24 +47,27 @@ $total_kembali = $dashboard->total_kembali();
     <a href="../views/v_admin_buku.php">📖 Data Buku</a>
     <a href="../views/v_data_user.php">👥 Data User</a>
     <a href="../views/verif_admin.php">📩 Pengajuan Pinjaman</a>
-    <a href="../views/v_pinjam.php">📥 Peminjaman</a>
     <a href="../views/v_riwayat_peminjaman_buku.php">📜 Riwayat</a>
     <a href="../controllers/c_logout.php">🚪 Logout</a>
 
 </div>
 
+
 <div class="main">
 
+    
     <div class="topbar">
         <h1>Dashboard Admin</h1>
-        <span>Halo, Admin 👋</span>
+        <span>Selamat datang, <?= htmlspecialchars($nama_admin) ?> 👋</span>
     </div>
+
 
     <div class="welcome">
         <h2>Selamat Datang di Dashboard Admin</h2>
         <p>Kelola sistem perpustakaan dengan mudah dan cepat</p>
     </div>
 
+    
     <div class="cards">
 
         <div class="card">
@@ -60,7 +78,6 @@ $total_kembali = $dashboard->total_kembali();
         <div class="card">
             <h3>👥 Total User</h3>
             <p><?= $total_user ?></p>
-            
         </div>
 
         <div class="card">
@@ -74,12 +91,12 @@ $total_kembali = $dashboard->total_kembali();
         </div>
 
         <div class="card">
-            <h3>📤Total Pengembalian Buku</h3>
+            <h3>📤 Total Pengembalian Buku</h3>
             <p><?= $total_kembali ?></p>
-            <p>28</p>
         </div>
 
     </div>
+
 
     <div class="section">
         <h3>📌 Informasi Admin</h3>
