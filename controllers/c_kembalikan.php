@@ -1,21 +1,28 @@
 <?php
 session_start();
 
+// Menghubungkan ke model yang dibutuhkan
 require_once "../models/m_pinjam.php";
 require_once "../models/m_buku.php";
 require_once "../models/m_riwayat.php";
 
+// Membuat objek dari masing-masing model
 $pinjam = new m_pinjam();
 $buku   = new m_buku();
 $riwayat = new m_riwayat();
 
+// Mengambil id pinjam dari URL
 $id_pinjam = $_GET['id_pinjam'];
 
-/* AMBIL DATA PINJAMAN */
+
 $data_pinjam = $pinjam->tampil_pinjam_by_id($id_pinjam);
 
-/* CEK DATA ADA */
+/* ==============================
+   CEK DATA ADA ATAU TIDAK
+============================== */
 if(!$data_pinjam){
+
+    // Jika data tidak ditemukan
     echo "<script>
     alert('Data tidak ditemukan');
     window.location='../views/sedang_dipinjam.php';
@@ -23,8 +30,10 @@ if(!$data_pinjam){
     exit;
 }
 
-/* CEK HAK AKSES (WAJIB) */
+
+// Hanya user yang meminjam yang boleh mengembalikan
 if($_SESSION['id_pengguna'] != $data_pinjam->id_pengguna){
+
     echo "<script>
     alert('Anda tidak berhak mengembalikan buku ini!');
     window.location='../views/sedang_dipinjam.php';
@@ -32,30 +41,33 @@ if($_SESSION['id_pengguna'] != $data_pinjam->id_pengguna){
     exit;
 }
 
-/* AMBIL DATA */
+
 $kode_buku     = $data_pinjam->kode_buku;
 $jumlah_pinjam = $data_pinjam->jumlah_pinjam;
 
-/* AMBIL DATA BUKU */
+
 $data_buku = $buku->tampil_data_by_kode($kode_buku);
 
-/* HITUNG STOK BARU */
+
+// Stok lama + jumlah yang dikembalikan
 $stok_baru = $data_buku->stok + $jumlah_pinjam;
 
-/* UPDATE STOK */
+
 $buku->update_stok($kode_buku,$stok_baru);
 
-/* UPDATE STATUS PINJAM */
+
+// Mengubah status menjadi "dikembalikan"
 $pinjam->kembalikan_buku($id_pinjam);
 
-/* MASUKKAN KE RIWAYAT */
+
+// Data riwayat disimpan setelah buku dikembalikan
 $riwayat->tambah_data(
-    $data_buku->nama_buku,
-    $_SESSION['nama_pengguna'],
-    $data_pinjam->tanggal_pinjam,
-    date("Y-m-d"),
-    $kode_buku,
-    $jumlah_pinjam
+    $data_buku->nama_buku,              // Nama buku
+    $_SESSION['nama_pengguna'],         // Nama user
+    $data_pinjam->tanggal_pinjam,       // Tanggal pinjam
+    date("Y-m-d"),                      // Tanggal kembali (hari ini)
+    $kode_buku,                         // Kode buku
+    $jumlah_pinjam                      // Jumlah pinjam
 );
 
 echo "<script>
