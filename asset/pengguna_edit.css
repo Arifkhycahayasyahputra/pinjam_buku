@@ -1,0 +1,777 @@
+/* =========================================================
+   EDIT PENGGUNA - STYLE
+   Tema hijau tetap. Warna light/dark diatur lewat variabel,
+   jadi dark mode cukup menimpa nilai variabel di bawah.
+========================================================= */
+
+
+/* =========================================================
+   VARIABEL WARNA
+========================================================= */
+
+:root {
+    --page-bg:
+        radial-gradient(circle at 8% 12%, rgba(134, 239, 172, 0.28), transparent 24%),
+        radial-gradient(circle at 92% 88%, rgba(74, 222, 128, 0.18), transparent 28%),
+        linear-gradient(135deg, #effdf4 0%, #f8fafc 52%, #ecfdf5 100%);
+
+    --text: #183b2a;
+
+    /* kartu */
+    --card-bg: rgba(255, 255, 255, 0.96);
+    --card-border: #dcefe3;
+    --card-shadow:
+        0 30px 70px rgba(22, 101, 52, 0.12),
+        0 8px 25px rgba(15, 23, 42, 0.05);
+
+    /* panel kiri */
+    --panel-bg: linear-gradient(150deg, #166534 0%, #15803d 55%, #22c55e 100%);
+    --panel-title: #ffffff;
+    --panel-text: rgba(255, 255, 255, 0.82);
+    --icon-bg: rgba(255, 255, 255, 0.12);
+    --icon-border: rgba(255, 255, 255, 0.20);
+    --icon-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+
+    /* form */
+    --form-bg: #ffffff;
+    --form-border: #e5f1e9;
+    --form-title: #14532d;
+    --divider: #edf3ef;
+
+    /* input & select */
+    --label: #334155;
+    --input-text: #1e293b;
+    --input-bg: #f8fcf9;
+    --input-bg-hover: #f8fcf9;
+    --input-bg-focus: #ffffff;
+    --input-border: #d9e8df;
+    --input-border-hover: #bbf7d0;
+    --placeholder: #9aa8a0;
+    --select-arrow: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='%2315803d' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.25 7.5L10 12.25 14.75 7.5z'/%3E%3C/svg%3E");
+
+    /* tombol batal */
+    --batal-text: #475569;
+    --batal-bg: #f1f5f9;
+    --batal-border: #e2e8f0;
+    --batal-hover-text: #334155;
+    --batal-hover-bg: #e2e8f0;
+
+    /* tombol tema */
+    --toggle-color: #166534;
+    --toggle-bg: rgba(255, 255, 255, 0.96);
+    --toggle-border: #bbf7d0;
+    --toggle-shadow: 0 8px 22px rgba(22, 101, 52, 0.12);
+}
+
+body.dark-mode {
+    color-scheme: dark;
+
+    --page-bg:
+        radial-gradient(circle at 8% 12%, rgba(34, 197, 94, 0.07), transparent 24%),
+        radial-gradient(circle at 92% 88%, rgba(34, 197, 94, 0.05), transparent 28%),
+        linear-gradient(135deg, #050908 0%, #0a110d 52%, #0d1711 100%);
+
+    --text: #e5e7eb;
+
+    --card-bg: rgba(15, 23, 18, 0.97);
+    --card-border: #263c30;
+    --card-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.45),
+        0 8px 25px rgba(0, 0, 0, 0.25);
+
+    --panel-bg: linear-gradient(150deg, #0d331f 0%, #104a28 55%, #146b37 100%);
+    --panel-text: rgba(255, 255, 255, 0.70);
+    --icon-bg: rgba(255, 255, 255, 0.07);
+    --icon-border: rgba(255, 255, 255, 0.11);
+    --icon-shadow: 0 20px 45px rgba(0, 0, 0, 0.22);
+
+    --form-bg: #101813;
+    --form-border: #263c30;
+    --form-title: #bbf7d0;
+    --divider: #263c30;
+
+    --label: #cbd5e1;
+    --input-text: #e5e7eb;
+    --input-bg: #142019;
+    --input-bg-hover: #17251c;
+    --input-bg-focus: #19291f;
+    --input-border: #304638;
+    --input-border-hover: #3d5a45;
+    --placeholder: #64748b;
+    --select-arrow: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='%2386efac' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.25 7.5L10 12.25 14.75 7.5z'/%3E%3C/svg%3E");
+
+    --batal-text: #cbd5e1;
+    --batal-bg: #142019;
+    --batal-border: #304638;
+    --batal-hover-text: #ffffff;
+    --batal-hover-bg: #1b2920;
+
+    --toggle-color: #fef08a;
+    --toggle-bg: #1b2920;
+    --toggle-border: #3b513f;
+    --toggle-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   RESET & BODY
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    padding: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--text);
+    background: var(--page-bg);
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   KARTU UTAMA
+   Kolom 1: panel hijau (judul + deskripsi)
+   Kolom 2: form
+   Panel dan ikon ikut jadi item grid, jadi tinggi panel
+   menyesuaikan teks otomatis di tablet dan HP.
+========================================================= */
+
+.card {
+    position: relative;
+
+    width: 100%;
+    max-width: 980px;
+
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    grid-template-rows: auto auto 1fr;
+
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 28px;
+    box-shadow: var(--card-shadow);
+
+    overflow: hidden;
+
+    animation: cardEnter 0.65s ease;
+}
+
+/* panel hijau */
+.card::before {
+    content: "";
+
+    grid-column: 1;
+    grid-row: 1 / -1;
+
+    background: var(--panel-bg);
+
+    z-index: 0;
+}
+
+/* ikon buku */
+.card::after {
+    content: "📚";
+
+    grid-column: 1;
+    grid-row: 1 / -1;
+
+    justify-self: center;
+    align-self: center;
+
+    width: 150px;
+    height: 150px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 38px;
+
+    color: #ffffff;
+    background: var(--icon-bg);
+    border: 1px solid var(--icon-border);
+    box-shadow: var(--icon-shadow);
+
+    font-size: 68px;
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   PANEL KIRI: JUDUL & DESKRIPSI
+========================================================= */
+
+.card h2 {
+    grid-column: 1;
+    grid-row: 1;
+
+    z-index: 2;
+
+    padding: 55px 35px 0;
+
+    color: var(--panel-title);
+
+    font-size: 29px;
+    font-weight: 750;
+    line-height: 1.2;
+}
+
+.card h2::after {
+    content: "";
+
+    display: block;
+
+    width: 48px;
+    height: 4px;
+
+    margin-top: 13px;
+
+    border-radius: 20px;
+
+    background: #86efac;
+}
+
+.card > p {
+    grid-column: 1;
+    grid-row: 2;
+
+    z-index: 2;
+
+    padding: 14px 35px 0;
+
+    color: var(--panel-text);
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.card form {
+    grid-column: 2;
+    grid-row: 1 / -1;
+
+    z-index: 3;
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    padding: 45px 48px;
+
+    background: var(--form-bg);
+    border-left: 1px solid var(--form-border);
+}
+
+.card form::before {
+    content: "Data Akun";
+
+    margin-bottom: 4px;
+
+    color: var(--form-title);
+
+    font-size: 18px;
+    font-weight: 750;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    min-width: 0;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.field-label {
+    color: var(--label);
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+
+/* =========================================================
+   INPUT & SELECT
+========================================================= */
+
+.field {
+    width: 100%;
+    height: 46px;
+
+    padding: 0 14px;
+
+    color: var(--input-text);
+    background: var(--input-bg);
+
+    border: 1px solid var(--input-border);
+    border-radius: 11px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.field::placeholder {
+    color: var(--placeholder);
+}
+
+.field:hover {
+    border-color: var(--input-border-hover);
+    background-color: var(--input-bg-hover);
+}
+
+.field:focus {
+    border-color: #22c55e;
+    background-color: var(--input-bg-focus);
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.10);
+}
+
+/* titik-titik password diberi jarak, placeholder tidak */
+input[type="password"].field:not(:placeholder-shown) {
+    letter-spacing: 2px;
+}
+
+/* select dengan panah hijau */
+select.field {
+    appearance: none;
+
+    padding-right: 42px;
+
+    background-image: var(--select-arrow);
+    background-repeat: no-repeat;
+    background-position: right 13px center;
+    background-size: 17px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   AKSI (BATAL & SIMPAN)
+========================================================= */
+
+.aksi {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 12px;
+
+    margin-top: auto;
+    padding-top: 20px;
+
+    border-top: 1px solid var(--divider);
+}
+
+.btn {
+    min-height: 47px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    padding: 12px 18px;
+
+    border: none;
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn:focus-visible {
+    outline: 3px solid rgba(34, 197, 94, 0.30);
+    outline-offset: 2px;
+}
+
+/* batal */
+.btn-batal {
+    color: var(--batal-text);
+    background: var(--batal-bg);
+    border: 1px solid var(--batal-border);
+}
+
+.btn-batal::before {
+    content: "←";
+
+    font-size: 16px;
+}
+
+.btn-batal:hover {
+    color: var(--batal-hover-text);
+    background: var(--batal-hover-bg);
+    box-shadow: 0 7px 15px rgba(15, 23, 42, 0.07);
+}
+
+/* simpan */
+.btn-simpan {
+    color: #ffffff;
+    background: linear-gradient(135deg, #22c55e, #15803d);
+    border: 1px solid #16a34a;
+    box-shadow: 0 9px 20px rgba(22, 163, 74, 0.20);
+}
+
+.btn-simpan::before {
+    content: "✓";
+
+    font-size: 15px;
+}
+
+.btn-simpan:hover {
+    background: linear-gradient(135deg, #16a34a, #166534);
+    box-shadow: 0 13px 27px rgba(22, 163, 74, 0.28);
+}
+
+
+/* =========================================================
+   TOMBOL TEMA
+========================================================= */
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    z-index: 9999;
+
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--toggle-color);
+    background: var(--toggle-bg);
+    border: 1px solid var(--toggle-border);
+    border-radius: 13px;
+    box-shadow: var(--toggle-shadow);
+
+    font-size: 19px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.theme-toggle:hover {
+    color: #ffffff;
+    background: linear-gradient(135deg, #22c55e, #15803d);
+    border-color: transparent;
+    transform: translateY(-2px) rotate(3deg);
+    box-shadow: 0 10px 25px rgba(22, 101, 52, 0.20);
+}
+
+
+/* =========================================================
+   ANIMASI
+========================================================= */
+
+@keyframes cardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        animation: none;
+    }
+
+    * {
+        transition: none !important;
+    }
+}
+
+
+/* =========================================================
+   LAYAR BESAR (>= 1100px)
+========================================================= */
+
+@media (min-width: 1100px) {
+
+    .card {
+        max-width: 1050px;
+    }
+
+    .card h2,
+    .card > p {
+        padding-left: 42px;
+        padding-right: 42px;
+    }
+
+    .card form {
+        padding: 50px 55px;
+    }
+
+    .card::after {
+        width: 165px;
+        height: 165px;
+
+        font-size: 75px;
+    }
+}
+
+
+/* =========================================================
+   TABLET (<= 800px)
+   Panel hijau pindah ke atas sebagai header.
+========================================================= */
+
+@media (max-width: 800px) {
+
+    body {
+        padding: 25px;
+    }
+
+    .card {
+        max-width: 600px;
+
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+
+        border-radius: 24px;
+    }
+
+    .card::before {
+        grid-row: 1 / 3;
+    }
+
+    .card::after {
+        grid-row: 1 / 3;
+
+        justify-self: end;
+
+        margin-right: 30px;
+
+        width: 80px;
+        height: 80px;
+
+        border-radius: 22px;
+
+        font-size: 38px;
+    }
+
+    .card h2 {
+        padding: 30px 125px 0 30px;
+
+        font-size: 25px;
+    }
+
+    .card > p {
+        padding: 8px 125px 28px 30px;
+
+        font-size: 12px;
+    }
+
+    .card form {
+        grid-column: 1;
+        grid-row: 3;
+
+        padding: 30px;
+
+        border-left: none;
+        border-top: 1px solid var(--form-border);
+    }
+}
+
+
+/* =========================================================
+   MOBILE (<= 550px)
+========================================================= */
+
+@media (max-width: 550px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .card {
+        border-radius: 20px;
+    }
+
+    .card::after {
+        margin-right: 20px;
+
+        width: 62px;
+        height: 62px;
+
+        border-radius: 17px;
+
+        font-size: 29px;
+    }
+
+    .card h2 {
+        padding: 25px 100px 0 22px;
+
+        font-size: 22px;
+    }
+
+    .card > p {
+        padding: 8px 100px 24px 22px;
+
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+    .card form {
+        padding: 25px 22px;
+    }
+
+    .card form::before {
+        font-size: 16px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .field-label {
+        font-size: 11px;
+    }
+
+    .field {
+        height: 44px;
+
+        font-size: 13px;
+    }
+
+    .aksi {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    /* simpan di atas, batal di bawah */
+    .btn-simpan {
+        order: -1;
+    }
+
+    .btn {
+        width: 100%;
+        min-height: 45px;
+
+        font-size: 12px;
+    }
+
+    .theme-toggle {
+        top: 14px;
+        right: 14px;
+
+        width: 42px;
+        height: 42px;
+
+        border-radius: 11px;
+
+        font-size: 17px;
+    }
+}
+
+
+/* =========================================================
+   HP KECIL (<= 380px)
+========================================================= */
+
+@media (max-width: 380px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .card {
+        border-radius: 18px;
+    }
+
+    .card::after {
+        margin-right: 16px;
+
+        width: 54px;
+        height: 54px;
+
+        border-radius: 15px;
+
+        font-size: 25px;
+    }
+
+    .card h2 {
+        padding: 22px 84px 0 18px;
+
+        font-size: 20px;
+    }
+
+    .card > p {
+        padding: 8px 84px 20px 18px;
+
+        font-size: 10px;
+    }
+
+    .card form {
+        padding: 22px 18px;
+    }
+
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+
+        width: 39px;
+        height: 39px;
+
+        font-size: 16px;
+    }
+}

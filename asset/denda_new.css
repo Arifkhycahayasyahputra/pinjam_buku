@@ -1,0 +1,1839 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #183b2a;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(134, 239, 172, 0.22),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 15%,
+            rgba(74, 222, 128, 0.16),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #f0fdf4 0%,
+            #f8fafc 50%,
+            #ecfdf5 100%
+        );
+
+    padding-bottom: 40px;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+    width: calc(100% - 40px);
+    max-width: 1250px;
+    margin: 20px auto 0;
+
+    min-height: 76px;
+    padding: 0 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: linear-gradient(
+        135deg,
+        #14532d,
+        #166534,
+        #15803d
+    );
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 12px 30px rgba(21, 128, 61, 0.18),
+        0 4px 10px rgba(20, 83, 45, 0.10);
+
+    position: relative;
+    z-index: 10;
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    transition: color 0.3s ease;
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-menu a {
+    color: #dcfce7;
+    text-decoration: none;
+
+    padding: 11px 15px;
+    border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: all 0.25s ease;
+}
+
+.nav-menu a:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.14);
+
+    transform: translateY(-1px);
+}
+
+.nav-menu a.active {
+    color: #14532d;
+    background: #ffffff;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.nav-menu a.logout {
+    margin-left: 5px;
+    color: #fee2e2;
+}
+
+.nav-menu a.logout:hover {
+    color: #ffffff;
+    background: rgba(220, 38, 38, 0.25);
+}
+
+
+/* =========================================================
+   TOMBOL LIGHT / DARK MODE
+========================================================= */
+
+.theme-toggle {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.10);
+    color: #ffffff;
+
+    font-size: 17px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    outline: none;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.20);
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.20);
+}
+
+.theme-toggle:active {
+    transform: scale(0.96);
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container {
+    width: calc(100% - 40px);
+    max-width: 1250px;
+    margin: 30px auto 0;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.page-header {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 190px;
+    padding: 32px 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+
+    border-radius: 24px;
+
+    color: #ffffff;
+
+    background: linear-gradient(
+        135deg,
+        #14532d 0%,
+        #166534 48%,
+        #22c55e 100%
+    );
+
+    box-shadow:
+        0 15px 35px rgba(21, 128, 61, 0.20);
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* =========================================================
+   DEKORASI HEADER
+========================================================= */
+
+.page-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 230px;
+    height: 230px;
+
+    border-radius: 50%;
+
+    right: -80px;
+    top: -100px;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.page-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 140px;
+    height: 140px;
+
+    border-radius: 50%;
+
+    right: 150px;
+    bottom: -90px;
+
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.page-header > div,
+.page-header > a {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   SMALL TITLE
+========================================================= */
+
+.small-title {
+    margin-bottom: 8px;
+
+    color: #bbf7d0;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.page-header h1 {
+    margin-bottom: 9px;
+
+    font-size: 32px;
+    line-height: 1.2;
+
+    font-weight: 800;
+}
+
+.page-header p:not(.small-title) {
+    max-width: 650px;
+
+    color: #dcfce7;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.page-header strong {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   TOMBOL KEMBALI
+========================================================= */
+
+.btn-back {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 18px;
+
+    color: #14532d;
+    background: #ffffff;
+
+    text-decoration: none;
+
+    border-radius: 13px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.10);
+
+    transition: all 0.25s ease;
+}
+
+.btn-back:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 22px rgba(0, 0, 0, 0.15);
+
+    background: #f0fdf4;
+}
+
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+.summary-grid {
+    margin-top: 22px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+
+/* =========================================================
+   SUMMARY CARD
+========================================================= */
+
+.summary-card {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 125px;
+    padding: 22px;
+
+    display: flex;
+    align-items: center;
+    gap: 17px;
+
+    background: rgba(255, 255, 255, 0.90);
+
+    border: 1px solid #dbece0;
+    border-radius: 19px;
+
+    box-shadow:
+        0 8px 25px rgba(21, 128, 61, 0.08);
+
+    transition: all 0.25s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-4px);
+
+    border-color: #bbf7d0;
+
+    box-shadow:
+        0 14px 30px rgba(21, 128, 61, 0.13);
+}
+
+
+/* garis kiri */
+
+.summary-card::before {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 5px;
+
+    background: linear-gradient(
+        to bottom,
+        #22c55e,
+        #15803d
+    );
+}
+
+
+/* icon */
+
+.summary-icon {
+    width: 58px;
+    height: 58px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: #dcfce7;
+
+    font-size: 25px;
+}
+
+
+/* text */
+
+.summary-card span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #64748b;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.summary-card strong {
+    display: block;
+
+    color: #14532d;
+
+    font-size: 22px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   BELUM LUNAS
+========================================================= */
+
+.summary-card.belum {
+    border-color: #fde68a;
+}
+
+.summary-card.belum::before {
+    background: linear-gradient(
+        to bottom,
+        #f59e0b,
+        #d97706
+    );
+}
+
+.summary-card.belum .summary-icon {
+    background: #fef3c7;
+}
+
+.summary-card.belum strong {
+    color: #b45309;
+}
+
+
+/* =========================================================
+   SUDAH LUNAS
+========================================================= */
+
+.summary-card.lunas {
+    border-color: #bbf7d0;
+}
+
+.summary-card.lunas::before {
+    background: linear-gradient(
+        to bottom,
+        #22c55e,
+        #15803d
+    );
+}
+
+.summary-card.lunas .summary-icon {
+    background: #dcfce7;
+}
+
+.summary-card.lunas strong {
+    color: #15803d;
+}
+
+
+/* =========================================================
+   DENDA SECTION
+========================================================= */
+
+.denda-section {
+    margin-top: 22px;
+
+    padding: 28px;
+
+    background: rgba(255, 255, 255, 0.88);
+
+    border: 1px solid #dbece0;
+    border-radius: 22px;
+
+    box-shadow:
+        0 8px 25px rgba(21, 128, 61, 0.07);
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* section title */
+
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 23px;
+}
+
+.section-title h2 {
+    color: #14532d;
+
+    font-size: 22px;
+    font-weight: 800;
+
+    transition: color 0.3s ease;
+}
+
+.section-title p {
+    margin-top: 5px;
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    transition: color 0.3s ease;
+}
+
+
+/* =========================================================
+   GRID DENDA
+========================================================= */
+
+.denda-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   DENDA CARD
+========================================================= */
+
+.denda-card {
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #ffffff;
+
+    border: 1px solid #dbece0;
+    border-radius: 19px;
+
+    box-shadow:
+        0 7px 22px rgba(21, 128, 61, 0.07);
+
+    transition: all 0.25s ease;
+}
+
+.denda-card:hover {
+    transform: translateY(-4px);
+
+    border-color: #a7f3d0;
+
+    box-shadow:
+        0 15px 32px rgba(21, 128, 61, 0.13);
+}
+
+
+/* =========================================================
+   FOTO BUKU
+========================================================= */
+
+.denda-image {
+    position: relative;
+
+    height: 210px;
+
+    overflow: hidden;
+
+    background: linear-gradient(
+        135deg,
+        #dcfce7,
+        #ecfdf5
+    );
+}
+
+.denda-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.35s ease;
+}
+
+.denda-card:hover .denda-image img {
+    transform: scale(1.04);
+}
+
+
+/* =========================================================
+   NO IMAGE
+========================================================= */
+
+.no-image {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 55px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #bbf7d0,
+            #dcfce7 45%,
+            #f0fdf4 100%
+        );
+}
+
+
+/* =========================================================
+   BADGE
+========================================================= */
+
+.badge {
+    position: absolute;
+
+    top: 14px;
+    right: 14px;
+
+    padding: 7px 11px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    backdrop-filter: blur(6px);
+}
+
+
+/* lunas */
+
+.badge-lunas {
+    color: #166534;
+
+    background: rgba(220, 252, 231, 0.95);
+
+    border: 1px solid #bbf7d0;
+}
+
+
+/* belum */
+
+.badge-belum {
+    color: #b45309;
+
+    background: rgba(254, 243, 199, 0.96);
+
+    border: 1px solid #fde68a;
+}
+
+
+/* =========================================================
+   DENDA CONTENT
+========================================================= */
+
+.denda-content {
+    padding: 21px;
+}
+
+
+/* kategori */
+
+.kategori {
+    display: inline-block;
+
+    margin-bottom: 7px;
+    padding: 5px 9px;
+
+    color: #15803d;
+    background: #f0fdf4;
+
+    border: 1px solid #bbf7d0;
+    border-radius: 7px;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+
+/* nama buku */
+
+.denda-content h3 {
+    margin-bottom: 17px;
+
+    color: #183b2a;
+
+    font-size: 20px;
+    line-height: 1.35;
+    font-weight: 800;
+
+    transition: color 0.3s ease;
+}
+
+
+/* =========================================================
+   INFO ROW
+========================================================= */
+
+.info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 10px 0;
+
+    border-bottom: 1px solid #eef5f0;
+
+    transition: border-color 0.3s ease;
+}
+
+.info-row span {
+    color: #64748b;
+
+    font-size: 12px;
+
+    transition: color 0.3s ease;
+}
+
+.info-row strong {
+    color: #334155;
+
+    font-size: 13px;
+    text-align: right;
+
+    transition: color 0.3s ease;
+}
+
+
+/* =========================================================
+   KETERANGAN
+========================================================= */
+
+.keterangan {
+    margin-top: 14px;
+    padding: 13px 14px;
+
+    background: #f8faf9;
+
+    border: 1px solid #e4eee7;
+    border-radius: 11px;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.keterangan > span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #64748b;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    transition: color 0.3s ease;
+}
+
+.keterangan p {
+    color: #475569;
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    transition: color 0.3s ease;
+}
+
+
+/* =========================================================
+   HARGA DENDA
+========================================================= */
+
+.harga {
+    margin-top: 16px;
+    padding: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    background: linear-gradient(
+        135deg,
+        #f0fdf4,
+        #dcfce7
+    );
+
+    border: 1px solid #bbf7d0;
+    border-radius: 13px;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.harga span {
+    color: #166534;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    transition: color 0.3s ease;
+}
+
+.harga strong {
+    color: #15803d;
+
+    font-size: 21px;
+    font-weight: 800;
+
+    transition: color 0.3s ease;
+}
+
+
+/* =========================================================
+   TOMBOL BAYAR
+========================================================= */
+
+.btn-bayar {
+    width: 100%;
+
+    margin-top: 15px;
+    padding: 13px 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+
+    background: linear-gradient(
+        135deg,
+        #15803d,
+        #22c55e
+    );
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    box-shadow:
+        0 7px 16px rgba(21, 128, 61, 0.18);
+
+    transition: all 0.25s ease;
+}
+
+.btn-bayar:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 22px rgba(21, 128, 61, 0.25);
+
+    background: linear-gradient(
+        135deg,
+        #166534,
+        #16a34a
+    );
+}
+
+
+/* =========================================================
+   SUDAH LUNAS
+========================================================= */
+
+.sudah-lunas {
+    width: 100%;
+
+    margin-top: 15px;
+    padding: 13px 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+    color: #166534;
+
+    background: #f0fdf4;
+
+    border: 1px solid #bbf7d0;
+    border-radius: 12px;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    text-align: center;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
+}
+
+.sudah-lunas small {
+    color: #64748b;
+
+    font-size: 11px;
+    font-weight: 500;
+
+    transition: color 0.3s ease;
+}
+
+
+/* =========================================================
+   EMPTY DENDA
+========================================================= */
+
+.empty-denda {
+    min-height: 330px;
+
+    padding: 45px 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        #f0fdf4,
+        #ffffff
+    );
+
+    border: 1px dashed #a7f3d0;
+    border-radius: 18px;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+/* icon empty */
+
+.empty-icon {
+    width: 80px;
+    height: 80px;
+
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #dcfce7;
+
+    border-radius: 50%;
+
+    font-size: 36px;
+
+    box-shadow:
+        0 8px 20px rgba(21, 128, 61, 0.10);
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.empty-denda h3 {
+    margin-bottom: 8px;
+
+    color: #14532d;
+
+    font-size: 21px;
+
+    transition: color 0.3s ease;
+}
+
+.empty-denda p {
+    margin-bottom: 20px;
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    transition: color 0.3s ease;
+}
+
+
+/* =========================================================
+   BUTTON PRIMARY
+========================================================= */
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 18px;
+
+    color: #ffffff;
+
+    background: linear-gradient(
+        135deg,
+        #15803d,
+        #22c55e
+    );
+
+    border-radius: 11px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    box-shadow:
+        0 6px 15px rgba(21, 128, 61, 0.16);
+
+    transition: all 0.25s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 20px rgba(21, 128, 61, 0.22);
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+.page-header,
+.summary-card,
+.denda-section,
+.denda-card {
+    animation: fadeUp 0.45s ease both;
+}
+
+.summary-card:nth-child(2) {
+    animation-delay: 0.05s;
+}
+
+.summary-card:nth-child(3) {
+    animation-delay: 0.1s;
+}
+
+.denda-card:nth-child(2) {
+    animation-delay: 0.08s;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .navbar {
+        width: calc(100% - 28px);
+    }
+
+    .container {
+        width: calc(100% - 28px);
+    }
+
+    .nav-menu {
+        gap: 3px;
+    }
+
+    .nav-menu a {
+        padding: 10px 11px;
+        font-size: 13px;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .denda-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding-bottom: 20px;
+    }
+
+    .navbar {
+        width: calc(100% - 20px);
+
+        margin-top: 10px;
+        padding: 15px 17px;
+
+        border-radius: 17px;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 13px;
+    }
+
+    .logo {
+        justify-content: center;
+        font-size: 18px;
+    }
+
+    /*
+       5 ITEM:
+       Dashboard | Buku | Denda | Tema | Logout
+    */
+
+    .nav-menu {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns: repeat(5, 1fr);
+
+        gap: 5px;
+    }
+
+    .nav-menu a {
+        padding: 9px 4px;
+
+        font-size: 11px;
+
+        text-align: center;
+    }
+
+    .nav-menu a.logout {
+        margin-left: 0;
+    }
+
+    .theme-toggle {
+        width: 100%;
+        height: 34px;
+
+        border-radius: 9px;
+
+        font-size: 15px;
+    }
+
+    .container {
+        width: calc(100% - 20px);
+        margin-top: 18px;
+    }
+
+    .page-header {
+        padding: 25px 22px;
+
+        min-height: auto;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        border-radius: 19px;
+    }
+
+    .page-header h1 {
+        font-size: 26px;
+    }
+
+    .page-header p:not(.small-title) {
+        font-size: 13px;
+    }
+
+    .btn-back {
+        width: 100%;
+    }
+
+    .denda-section {
+        padding: 19px 15px;
+
+        border-radius: 18px;
+    }
+
+    .section-title {
+        margin-bottom: 17px;
+    }
+
+    .section-title h2 {
+        font-size: 19px;
+    }
+
+    .denda-content {
+        padding: 17px;
+    }
+
+    .denda-image {
+        height: 190px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - HP KECIL
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .navbar {
+        padding: 13px 12px;
+    }
+
+    .nav-menu {
+        gap: 3px;
+    }
+
+    .nav-menu a {
+        font-size: 10px;
+        padding: 8px 3px;
+    }
+
+    .theme-toggle {
+        height: 32px;
+        font-size: 14px;
+    }
+
+    .page-header {
+        padding: 22px 18px;
+    }
+
+    .page-header h1 {
+        font-size: 23px;
+    }
+
+    .summary-card {
+        padding: 18px;
+    }
+
+    .summary-icon {
+        width: 50px;
+        height: 50px;
+
+        font-size: 21px;
+    }
+
+    .summary-card strong {
+        font-size: 18px;
+    }
+
+    .denda-image {
+        height: 170px;
+    }
+
+    .denda-content h3 {
+        font-size: 18px;
+    }
+
+    .harga {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .harga strong {
+        font-size: 19px;
+    }
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+body.dark-mode {
+    color: #e5e7eb;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(34, 197, 94, 0.10),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 15%,
+            rgba(22, 163, 74, 0.08),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #0f172a 0%,
+            #111827 50%,
+            #0f1f19 100%
+        );
+}
+
+
+/* =========================================================
+   DARK MODE - NAVBAR
+========================================================= */
+
+body.dark-mode .navbar {
+    background: linear-gradient(
+        135deg,
+        #052e16,
+        #064e3b,
+        #166534
+    );
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.35),
+        0 4px 10px rgba(0, 0, 0, 0.20);
+}
+
+body.dark-mode .logo {
+    color: #ffffff;
+}
+
+body.dark-mode .nav-menu a {
+    color: #bbf7d0;
+}
+
+body.dark-mode .nav-menu a:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.10);
+}
+
+body.dark-mode .nav-menu a.active {
+    color: #dcfce7;
+    background: #166534;
+}
+
+body.dark-mode .nav-menu a.logout {
+    color: #fecaca;
+}
+
+body.dark-mode .nav-menu a.logout:hover {
+    color: #ffffff;
+    background: rgba(220, 38, 38, 0.25);
+}
+
+
+/* =========================================================
+   DARK MODE - TOMBOL TEMA
+========================================================= */
+
+body.dark-mode .theme-toggle {
+    background: #1f2937;
+
+    border-color: #374151;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+body.dark-mode .theme-toggle:hover {
+    background: #374151;
+
+    border-color: #4b5563;
+}
+
+
+/* =========================================================
+   DARK MODE - HEADER
+========================================================= */
+
+body.dark-mode .page-header {
+    background: linear-gradient(
+        135deg,
+        #052e16 0%,
+        #064e3b 50%,
+        #15803d 100%
+    );
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.30);
+}
+
+body.dark-mode .small-title {
+    color: #86efac;
+}
+
+body.dark-mode .page-header p:not(.small-title) {
+    color: #bbf7d0;
+}
+
+body.dark-mode .page-header strong {
+    color: #ffffff;
+}
+
+body.dark-mode .btn-back {
+    color: #dcfce7;
+    background: #1f2937;
+}
+
+body.dark-mode .btn-back:hover {
+    background: #374151;
+}
+
+
+/* =========================================================
+   DARK MODE - SUMMARY CARD
+========================================================= */
+
+body.dark-mode .summary-card {
+    background: rgba(31, 41, 55, 0.92);
+
+    border-color: #374151;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+body.dark-mode .summary-card:hover {
+    border-color: #166534;
+
+    box-shadow:
+        0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-mode .summary-card span {
+    color: #9ca3af;
+}
+
+body.dark-mode .summary-card strong {
+    color: #86efac;
+}
+
+body.dark-mode .summary-icon {
+    background: #064e3b;
+}
+
+
+/* =========================================================
+   DARK MODE - BELUM LUNAS
+========================================================= */
+
+body.dark-mode .summary-card.belum {
+    border-color: #78350f;
+}
+
+body.dark-mode .summary-card.belum .summary-icon {
+    background: #451a03;
+}
+
+body.dark-mode .summary-card.belum strong {
+    color: #fbbf24;
+}
+
+
+/* =========================================================
+   DARK MODE - LUNAS
+========================================================= */
+
+body.dark-mode .summary-card.lunas {
+    border-color: #166534;
+}
+
+body.dark-mode .summary-card.lunas .summary-icon {
+    background: #064e3b;
+}
+
+body.dark-mode .summary-card.lunas strong {
+    color: #4ade80;
+}
+
+
+/* =========================================================
+   DARK MODE - DENDA SECTION
+========================================================= */
+
+body.dark-mode .denda-section {
+    background: rgba(17, 24, 39, 0.90);
+
+    border-color: #374151;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+body.dark-mode .section-title h2 {
+    color: #86efac;
+}
+
+body.dark-mode .section-title p {
+    color: #9ca3af;
+}
+
+
+/* =========================================================
+   DARK MODE - DENDA CARD
+========================================================= */
+
+body.dark-mode .denda-card {
+    background: #1f2937;
+
+    border-color: #374151;
+
+    box-shadow:
+        0 7px 22px rgba(0, 0, 0, 0.25);
+}
+
+body.dark-mode .denda-card:hover {
+    border-color: #166534;
+
+    box-shadow:
+        0 15px 32px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   DARK MODE - FOTO BUKU
+========================================================= */
+
+body.dark-mode .denda-image {
+    background: linear-gradient(
+        135deg,
+        #064e3b,
+        #052e16
+    );
+}
+
+body.dark-mode .no-image {
+    background:
+        radial-gradient(
+            circle at center,
+            #166534,
+            #064e3b 45%,
+            #052e16 100%
+        );
+}
+
+
+/* =========================================================
+   DARK MODE - BADGE
+========================================================= */
+
+body.dark-mode .badge-lunas {
+    color: #86efac;
+
+    background: rgba(6, 78, 59, 0.95);
+
+    border-color: #166534;
+}
+
+body.dark-mode .badge-belum {
+    color: #fbbf24;
+
+    background: rgba(69, 26, 3, 0.95);
+
+    border-color: #92400e;
+}
+
+
+/* =========================================================
+   DARK MODE - DENDA CONTENT
+========================================================= */
+
+body.dark-mode .kategori {
+    color: #86efac;
+
+    background: #064e3b;
+
+    border-color: #166534;
+}
+
+body.dark-mode .denda-content h3 {
+    color: #f3f4f6;
+}
+
+
+/* =========================================================
+   DARK MODE - INFO ROW
+========================================================= */
+
+body.dark-mode .info-row {
+    border-color: #374151;
+}
+
+body.dark-mode .info-row span {
+    color: #9ca3af;
+}
+
+body.dark-mode .info-row strong {
+    color: #d1d5db;
+}
+
+
+/* =========================================================
+   DARK MODE - KETERANGAN
+========================================================= */
+
+body.dark-mode .keterangan {
+    background: #111827;
+
+    border-color: #374151;
+}
+
+body.dark-mode .keterangan > span {
+    color: #9ca3af;
+}
+
+body.dark-mode .keterangan p {
+    color: #d1d5db;
+}
+
+
+/* =========================================================
+   DARK MODE - HARGA DENDA
+========================================================= */
+
+body.dark-mode .harga {
+    background: linear-gradient(
+        135deg,
+        #052e16,
+        #064e3b
+    );
+
+    border-color: #166534;
+}
+
+body.dark-mode .harga span {
+    color: #86efac;
+}
+
+body.dark-mode .harga strong {
+    color: #4ade80;
+}
+
+
+/* =========================================================
+   DARK MODE - TOMBOL BAYAR
+========================================================= */
+
+body.dark-mode .btn-bayar {
+    background: linear-gradient(
+        135deg,
+        #166534,
+        #22c55e
+    );
+
+    box-shadow:
+        0 7px 16px rgba(0, 0, 0, 0.30);
+}
+
+body.dark-mode .btn-bayar:hover {
+    background: linear-gradient(
+        135deg,
+        #15803d,
+        #16a34a
+    );
+}
+
+
+/* =========================================================
+   DARK MODE - SUDAH LUNAS
+========================================================= */
+
+body.dark-mode .sudah-lunas {
+    color: #86efac;
+
+    background: #052e16;
+
+    border-color: #166534;
+}
+
+body.dark-mode .sudah-lunas small {
+    color: #9ca3af;
+}
+
+
+/* =========================================================
+   DARK MODE - EMPTY DENDA
+========================================================= */
+
+body.dark-mode .empty-denda {
+    background: linear-gradient(
+        135deg,
+        #052e16,
+        #111827
+    );
+
+    border-color: #166534;
+}
+
+body.dark-mode .empty-icon {
+    background: #064e3b;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.30);
+}
+
+body.dark-mode .empty-denda h3 {
+    color: #86efac;
+}
+
+body.dark-mode .empty-denda p {
+    color: #9ca3af;
+}
+
+
+/* =========================================================
+   DARK MODE - BUTTON PRIMARY
+========================================================= */
+
+body.dark-mode .btn-primary {
+    background: linear-gradient(
+        135deg,
+        #166534,
+        #22c55e
+    );
+}
+
+
+/* =========================================================
+   TRANSITION TEMA
+========================================================= */
+
+body,
+.navbar,
+.page-header,
+.summary-card,
+.denda-section,
+.denda-card,
+.keterangan,
+.harga,
+.empty-denda,
+.empty-icon,
+.sudah-lunas,
+.info-row,
+.theme-toggle,
+.btn-back {
+    transition:
+        background 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+

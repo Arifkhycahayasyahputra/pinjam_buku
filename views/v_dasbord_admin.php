@@ -1,109 +1,210 @@
 <?php
+
 session_start();
 
+/*
+==========================================================
+TAMPILKAN ERROR SAAT DEBUGGING
+(hapus dua baris ini kalau website sudah dipakai sungguhan)
+==========================================================
+*/
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
+/*
+==========================================================
+CEK LOGIN
+==========================================================
+*/
 if (!isset($_SESSION['role'])) {
-    header("Location: ../index.php");
+    header("Location: /pinjam_buku/");
     exit;
 }
 
+/*
+==========================================================
+CEK ROLE ADMIN
+==========================================================
+*/
 if ($_SESSION['role'] !== 'admin') {
-    header("Location: v_dasbord_user.php");
+    header("Location: /pinjam_buku/dashboard");
     exit;
 }
 
-
+/*
+==========================================================
+PANGGIL MODEL
+==========================================================
+*/
 include "../models/m_dashboard.php";
 
 $dashboard = new m_dashboard();
 
+/*
+==========================================================
+AMBIL DATA DASHBOARD
+==========================================================
+*/
 $total_buku    = $dashboard->total_buku();
 $total_user    = $dashboard->total_user();
 $total_pending = $dashboard->total_pending();
 $total_pinjam  = $dashboard->total_pinjam();
 $total_kembali = $dashboard->total_kembali();
 
-
+/*
+==========================================================
+NAMA ADMIN
+==========================================================
+*/
 $nama_admin = $_SESSION['nama_pengguna'] ?? 'Admin';
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="UTF-8">
-<title>Dashboard Admin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="/pinjam_buku/asset/dasbord_admin.css">
+    <title>Dashboard Admin</title>
 
+    <link rel="stylesheet" href="/pinjam_buku/asset/admin_dasbord.css?v=4">
 </head>
+
 <body>
 
+<!-- SIDEBAR -->
+<aside class="sidebar">
 
-<div class="sidebar">
+    <div class="sidebar-brand">
+        <span class="brand-icon">📚</span>
+        <span>Admin</span>
+    </div>
 
-    <h2>📚 Admin</h2>
+    <nav class="sidebar-nav">
 
-    <a href="#">🏠 Dashboard</a>
-    <a href="../views/v_admin_buku.php">📖 Data Buku</a>
-    <a href="../views/v_data_user.php">👥 Data User</a>
-    <a href="../views/verif_admin.php">📩 Pengajuan Pinjaman</a>
-    <a href="../views/v_riwayat_peminjaman_buku.php">📜 Riwayat</a>
-    <a href="../controllers/c_logout.php">🚪 Logout</a>
+        <a href="/pinjam_buku/admin" class="nav-link active">
+            <span class="nav-icon">🏠</span> Dashboard
+        </a>
 
-</div>
+        <a href="/pinjam_buku/admin/buku" class="nav-link">
+            <span class="nav-icon">📖</span> Data Buku
+        </a>
+
+        <a href="/pinjam_buku/admin/user" class="nav-link">
+            <span class="nav-icon">👥</span> Data User
+        </a>
+
+        <a href="/pinjam_buku/admin/pengajuan" class="nav-link">
+            <span class="nav-icon">📩</span> Pengajuan Pinjaman
+        </a>
+
+        <a href="/pinjam_buku/admin/riwayat" class="nav-link">
+            <span class="nav-icon">📜</span> Riwayat
+        </a>
+
+    </nav>
+
+    <div class="sidebar-footer">
+        <a href="/pinjam_buku/controllers/c_logout.php" class="nav-link">
+            <span class="nav-icon">🚪</span> Logout
+        </a>
+    </div>
+
+</aside>
 
 
+<!-- MAIN -->
 <div class="main">
 
-    
-    <div class="topbar">
+    <!-- TOPBAR -->
+    <header class="topbar">
+
         <h1>Dashboard Admin</h1>
-        <span>Selamat datang, <?= htmlspecialchars($nama_admin) ?> 👋</span>
-    </div>
+
+        <div class="topbar-right">
+
+            <span class="user-chip" title="Admin yang sedang login">
+                <?= htmlspecialchars($nama_admin) ?>
+            </span>
+
+            <button
+                type="button"
+                id="theme-toggle"
+                class="theme-toggle"
+                aria-label="Ganti tema"
+                title="Ganti tema"
+            >🌙</button>
+
+        </div>
+
+    </header>
 
 
-    <div class="welcome">
+    <!-- WELCOME -->
+    <section class="welcome">
         <h2>Selamat Datang di Dashboard Admin</h2>
         <p>Kelola sistem perpustakaan dengan mudah dan cepat</p>
-    </div>
-
-    
-    <div class="cards">
-
-        <div class="card">
-            <h3>📚 Total Buku</h3>
-            <p><?= $total_buku ?></p>
-        </div>
-
-        <div class="card">
-            <h3>👥 Total User</h3>
-            <p><?= $total_user ?></p>
-        </div>
-
-        <div class="card">
-            <h3>📩 Pengajuan Baru</h3>
-            <p><?= $total_pending ?></p>
-        </div>
-
-        <div class="card">
-            <h3>📥 Peminjaman</h3>
-            <p><?= $total_pinjam ?></p>
-        </div>
-
-        <div class="card">
-            <h3>📤 Total Pengembalian Buku</h3>
-            <p><?= $total_kembali ?></p>
-        </div>
-
-    </div>
+    </section>
 
 
-    <div class="section">
+    <!-- STATISTIK -->
+    <section class="cards">
+
+        <article class="card">
+            <h3 class="card-label">Total Buku</h3>
+            <div class="card-stat">
+                <span class="card-icon">📚</span>
+                <span class="card-value"><?= (int) $total_buku ?></span>
+            </div>
+        </article>
+
+        <article class="card">
+            <h3 class="card-label">Total User</h3>
+            <div class="card-stat">
+                <span class="card-icon">👥</span>
+                <span class="card-value"><?= (int) $total_user ?></span>
+            </div>
+        </article>
+
+        <article class="card">
+            <h3 class="card-label">Pengajuan Baru</h3>
+            <div class="card-stat">
+                <span class="card-icon">📩</span>
+                <span class="card-value"><?= (int) $total_pending ?></span>
+            </div>
+        </article>
+
+        <article class="card">
+            <h3 class="card-label">Peminjaman</h3>
+            <div class="card-stat">
+                <span class="card-icon">📥</span>
+                <span class="card-value"><?= (int) $total_pinjam ?></span>
+            </div>
+        </article>
+
+        <article class="card">
+            <h3 class="card-label">Total Pengembalian Buku</h3>
+            <div class="card-stat">
+                <span class="card-icon">📤</span>
+                <span class="card-value"><?= (int) $total_kembali ?></span>
+            </div>
+        </article>
+
+    </section>
+
+
+    <!-- INFORMASI ADMIN -->
+    <section class="section">
         <h3>📌 Informasi Admin</h3>
         <p>Gunakan sidebar untuk mengelola semua data perpustakaan.</p>
-    </div>
+    </section>
 
 </div>
+
+
+<!-- GLOBAL THEME -->
+<script src="/pinjam_buku/asset/theme.js"></script>
 
 </body>
 </html>

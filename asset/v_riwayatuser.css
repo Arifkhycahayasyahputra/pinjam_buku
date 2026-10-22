@@ -1,140 +1,1444 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
-body{
-    background:linear-gradient(135deg,#e0f2fe,#f8fafc);
-    padding:30px;
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+    min-height: 100vh;
+    padding: 30px;
+
+    color: #172b1f;
+
+    background:
+        radial-gradient(
+            circle at 5% 5%,
+            rgba(34, 197, 94, 0.12),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 95% 95%,
+            rgba(134, 239, 172, 0.18),
+            transparent 30%
+        ),
+
+        #f6faf7;
+
+    overflow-x: hidden;
+
+    transition:
+        background 0.35s ease,
+        color 0.35s ease;
 }
 
-/* CONTAINER */
-.container{
-    max-width:1400px;
-    margin:auto;
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container {
+    width: 100%;
+    max-width: 1380px;
+
+    margin: auto;
 }
 
-/* HEADER */
-.header{
-    background:linear-gradient(135deg,#2563eb,#1d4ed8);
-    padding:30px;
-    border-radius:22px;
-    color:white;
-    margin-bottom:25px;
-    box-shadow:0 12px 30px rgba(37,99,235,0.3);
+
+/* =========================================================
+   HEADER DASHBOARD
+========================================================= */
+
+.header {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) 300px;
+
+    min-height: 190px;
+
+    margin-bottom: 24px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1eee5;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 12px 35px rgba(15, 23, 42, 0.06);
+
+    overflow: hidden;
+
+    transition:
+        background 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
-.header h2{
-    font-size:32px;
-    margin-bottom:5px;
+
+/* =========================================================
+   HEADER MAIN CONTENT
+========================================================= */
+
+.header > h2,
+.header > p {
+    grid-column: 1;
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-left: 36px;
 }
 
-.header p{
-    opacity:.9;
+
+.header h2 {
+    align-self: end;
+
+    margin-top: 30px;
+    margin-bottom: 8px;
+
+    color: #14532d;
+
+    font-size: clamp(27px, 3vw, 37px);
+
+    font-weight: 750;
+
+    line-height: 1.15;
+
+    letter-spacing: -1px;
+
+    transition: color 0.35s ease;
 }
 
-/* BUTTON */
-.menu{
-    margin-top:18px;
+
+.header p {
+    align-self: start;
+
+    max-width: 650px;
+
+    margin-bottom: 30px;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    transition: color 0.35s ease;
 }
 
-.btn{
-    display:inline-block;
-    padding:12px 18px;
-    border-radius:12px;
-    text-decoration:none;
-    font-weight:bold;
-    color:white;
-    transition:.3s;
+
+/* =========================================================
+   HEADER SIDE PANEL
+========================================================= */
+
+.header::after {
+    content: "📚";
+
+    position: absolute;
+
+    right: 0;
+    top: 0;
+
+    width: 300px;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            145deg,
+            #15803d,
+            #22c55e
+        );
+
+    font-size: 65px;
+
+    box-shadow:
+        inset 20px 0 35px rgba(0, 0, 0, 0.04);
+
+    transition: background 0.35s ease;
 }
 
-.btn:hover{
-    transform:translateY(-3px);
+
+/* =========================================================
+   DECORATION
+========================================================= */
+
+.header::before {
+    content: "";
+
+    position: absolute;
+
+    left: 45%;
+
+    bottom: -90px;
+
+    width: 210px;
+    height: 210px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(134, 239, 172, 0.12);
+
+    pointer-events: none;
 }
 
-.dashboard{
-    background:#0f172a;
-    box-shadow:0 6px 15px rgba(0,0,0,0.2);
+
+/* =========================================================
+   MENU
+========================================================= */
+
+.menu {
+    position: absolute;
+
+    z-index: 10;
+
+    top: 22px;
+    left: 30px;
+
+    display: flex;
+
+    gap: 8px;
 }
 
-/* TABLE BOX */
-.table-box{
-    background:white;
-    padding:25px;
-    border-radius:22px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-    overflow-x:auto;
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 38px;
+
+    padding: 9px 15px;
+
+    color: #166534;
+
+    background: #f0fdf4;
+
+    border: 1px solid #bbf7d0;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 650;
+
+    transition: 0.25s ease;
+
+    cursor: pointer;
 }
 
-/* TABLE */
-table{
-    width:100%;
-    border-collapse:collapse;
+
+/* =========================================================
+   BUTTON ICON
+========================================================= */
+
+.btn::before {
+    content: "←";
+
+    margin-right: 7px;
+
+    font-size: 15px;
 }
 
-thead{
-    background:linear-gradient(135deg,#3b82f6,#2563eb);
-    color:white;
+
+/* =========================================================
+   BUTTON HOVER
+========================================================= */
+
+.btn:hover {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #15803d
+        );
+
+    border-color: transparent;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(34, 197, 94, 0.18);
 }
 
-th,td{
-    padding:18px;
-    text-align:center;
+
+/* =========================================================
+   DASHBOARD BUTTON
+========================================================= */
+
+.dashboard {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #166534,
+            #15803d
+        );
+
+    border-color: transparent;
 }
 
-tbody tr{
-    border-bottom:1px solid #e2e8f0;
-    transition:.3s;
+
+/* =========================================================
+   THEME BUTTON
+========================================================= */
+
+.theme-toggle {
+    width: 42px;
+
+    min-width: 42px;
+
+    padding: 0;
+
+    font-size: 17px;
+
+    border-radius: 10px;
 }
 
-tbody tr:hover{
-    background:#eff6ff;
-    transform:scale(1.01);
+
+/* Hilangkan tanda ← dari button tema */
+
+.theme-toggle::before {
+    content: "";
+
+    margin: 0;
 }
 
-/* BADGE STATUS */
-.badge{
-    padding:6px 12px;
-    border-radius:20px;
-    font-size:13px;
-    font-weight:bold;
+
+/* =========================================================
+   THEME BUTTON HOVER
+========================================================= */
+
+.theme-toggle:hover {
+    transform: translateY(-2px) rotate(3deg);
 }
 
-.pinjam{
-    background:#fef3c7;
-    color:#d97706;
+
+/* =========================================================
+   TABLE BOX
+========================================================= */
+
+.table-box {
+    width: 100%;
+
+    background: #ffffff;
+
+    border: 1px solid #e2ece5;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 15px 40px rgba(15, 23, 42, 0.055);
+
+    overflow-x: auto;
+
+    transition:
+        background 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
-.kembali{
-    background:#dcfce7;
-    color:#16a34a;
+
+/* =========================================================
+   TABLE TOP AREA
+========================================================= */
+
+.table-box::before {
+    content: "Riwayat Peminjaman";
+
+    display: block;
+
+    padding: 20px 25px;
+
+    color: #14532d;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #edf3ef;
+
+    font-size: 16px;
+
+    font-weight: 750;
+
+    transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease;
 }
 
-/* EMPTY */
-.empty{
-    padding:20px;
-    color:#64748b;
-    font-weight:bold;
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+table {
+    width: 100%;
+
+    min-width: 900px;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
 }
 
-/* FOOTER */
-.footer{
-    text-align:center;
-    margin-top:25px;
-    color:#64748b;
-    font-size:14px;
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+thead {
+    background: #f5faf6;
+
+    transition:
+        background 0.35s ease;
 }
 
-/* RESPONSIVE */
-@media(max-width:768px){
-    body{
-        padding:15px;
+
+th {
+    padding: 15px 20px;
+
+    color: #527060;
+
+    text-align: left;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    border-bottom:
+        1px solid #dfece3;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease;
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+td {
+    padding: 17px 20px;
+
+    color: #475569;
+
+    text-align: left;
+
+    font-size: 13px;
+
+    border-bottom:
+        1px solid #edf2ef;
+
+    vertical-align: middle;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+/* =========================================================
+   FIRST COLUMN
+========================================================= */
+
+td:first-child {
+    color: #14532d;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   ROW
+========================================================= */
+
+tbody tr {
+    background: #ffffff;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+tbody tr:nth-child(even) {
+    background: #fbfdfb;
+}
+
+
+tbody tr:hover {
+    background: #f0fdf4;
+
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   LAST ROW
+========================================================= */
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   STATUS BADGE
+========================================================= */
+
+.badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 105px;
+
+    padding: 7px 13px;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.1px;
+}
+
+
+/* =========================================================
+   STATUS DIPINJAM
+========================================================= */
+
+.pinjam {
+    color: #b45309;
+
+    background: #fff7ed;
+
+    border:
+        1px solid #fed7aa;
+}
+
+
+/* =========================================================
+   STATUS DIKEMBALIKAN
+========================================================= */
+
+.kembali {
+    color: #15803d;
+
+    background: #ecfdf5;
+
+    border:
+        1px solid #bbf7d0;
+}
+
+
+/* =========================================================
+   STATUS DENDA
+========================================================= */
+
+.status-denda {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 10px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   BELUM LUNAS
+========================================================= */
+
+.status-denda.belum-lunas {
+    color: #92400e;
+
+    background: #fef3c7;
+
+    border: 1px solid #fde68a;
+}
+
+
+/* =========================================================
+   LUNAS
+========================================================= */
+
+.status-denda.lunas {
+    color: #166534;
+
+    background: #dcfce7;
+
+    border: 1px solid #bbf7d0;
+}
+
+
+/* =========================================================
+   TIDAK ADA DENDA
+========================================================= */
+
+.status-denda.tidak-ada {
+    color: #475569;
+
+    background: #e9ecef;
+
+    border: 1px solid #d1d5db;
+}
+
+
+/* =========================================================
+   BUTTON KEMBALI
+========================================================= */
+
+.btn-kembali {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    min-width: 105px;
+
+    padding: 9px 14px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #16a34a
+        );
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 5px 13px rgba(34, 197, 94, 0.16);
+
+    transition: 0.25s ease;
+}
+
+
+/* =========================================================
+   ICON BUTTON
+========================================================= */
+
+.btn-kembali::before {
+    content: "✓";
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+========================================================= */
+
+.btn-kembali:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #15803d,
+            #166534
+        );
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 9px 20px rgba(22, 101, 52, 0.22);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty {
+    padding: 60px 20px;
+
+    color: #64748b;
+
+    background: #fbfdfb;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.empty::before {
+    content: "📖";
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-size: 40px;
+
+    opacity: 0.6;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    margin-top: 18px;
+
+    padding: 16px;
+
+    color: #94a3b8;
+
+    text-align: center;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+body.dark-mode {
+
+    color: #e5e7eb;
+
+    background:
+        radial-gradient(
+            circle at 5% 5%,
+            rgba(34, 197, 94, 0.08),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 95% 95%,
+            rgba(34, 197, 94, 0.06),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #07130d,
+            #0b1711,
+            #0d1b14
+        );
+}
+
+
+/* =========================================================
+   DARK HEADER
+========================================================= */
+
+body.dark-mode .header {
+
+    background: #101a14;
+
+    border-color: #263c30;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.35);
+}
+
+
+body.dark-mode .header h2 {
+
+    color: #bbf7d0;
+}
+
+
+body.dark-mode .header p {
+
+    color: #94a3b8;
+}
+
+
+body.dark-mode .header::after {
+
+    background:
+        linear-gradient(
+            145deg,
+            #14532d,
+            #166534
+        );
+
+    box-shadow:
+        inset 20px 0 35px rgba(0, 0, 0, 0.15);
+}
+
+
+body.dark-mode .header::before {
+
+    background:
+        rgba(34, 197, 94, 0.05);
+}
+
+
+/* =========================================================
+   DARK BUTTON
+========================================================= */
+
+body.dark-mode .btn {
+
+    color: #86efac;
+
+    background: #102219;
+
+    border-color: #28543a;
+}
+
+
+body.dark-mode .btn:hover {
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #15803d
+        );
+
+    border-color: transparent;
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.30);
+}
+
+
+body.dark-mode .dashboard {
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #166534,
+            #15803d
+        );
+
+    border-color: transparent;
+}
+
+
+/* =========================================================
+   DARK THEME BUTTON
+========================================================= */
+
+body.dark-mode .theme-toggle {
+
+    color: #fef08a;
+
+    background: #1d2a20;
+
+    border-color: #3b513f;
+}
+
+
+/* =========================================================
+   DARK TABLE BOX
+========================================================= */
+
+body.dark-mode .table-box {
+
+    background: #101a14;
+
+    border-color: #263c30;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+
+body.dark-mode .table-box::before {
+
+    color: #bbf7d0;
+
+    background: #101a14;
+
+    border-bottom-color: #263c30;
+}
+
+
+/* =========================================================
+   DARK TABLE HEADER
+========================================================= */
+
+body.dark-mode thead {
+
+    background: #142119;
+}
+
+
+body.dark-mode th {
+
+    color: #86a994;
+
+    border-bottom-color: #2b4033;
+}
+
+
+/* =========================================================
+   DARK TABLE DATA
+========================================================= */
+
+body.dark-mode td {
+
+    color: #cbd5e1;
+
+    border-bottom-color: #26352c;
+}
+
+
+body.dark-mode td:first-child {
+
+    color: #86efac;
+}
+
+
+/* =========================================================
+   DARK ROW
+========================================================= */
+
+body.dark-mode tbody tr {
+
+    background: #101a14;
+}
+
+
+body.dark-mode tbody tr:nth-child(even) {
+
+    background: #0e1812;
+}
+
+
+body.dark-mode tbody tr:hover {
+
+    background: #14291c;
+}
+
+
+/* =========================================================
+   DARK STATUS - BELUM LUNAS
+========================================================= */
+
+body.dark-mode .status-denda.belum-lunas {
+
+    color: #fcd34d;
+
+    background: #2b2110;
+
+    border-color: #594719;
+}
+
+
+/* =========================================================
+   DARK STATUS - LUNAS
+========================================================= */
+
+body.dark-mode .status-denda.lunas {
+
+    color: #86efac;
+
+    background: #10291a;
+
+    border-color: #28543a;
+}
+
+
+/* =========================================================
+   DARK STATUS - TIDAK ADA
+========================================================= */
+
+body.dark-mode .status-denda.tidak-ada {
+
+    color: #cbd5e1;
+
+    background: #1e293b;
+
+    border-color: #334155;
+}
+
+
+/* =========================================================
+   DARK EMPTY
+========================================================= */
+
+body.dark-mode .empty {
+
+    color: #94a3b8;
+
+    background: #0e1812;
+}
+
+
+/* =========================================================
+   DARK FOOTER
+========================================================= */
+
+body.dark-mode .footer {
+
+    color: #64748b;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1500px) {
+
+    body {
+        padding: 40px 5%;
     }
 
-    th,td{
-        padding:12px;
-        font-size:13px;
+
+    .container {
+        max-width: 1450px;
+    }
+
+
+    .header {
+        grid-template-columns:
+            minmax(0, 1fr) 340px;
+
+        min-height: 210px;
+    }
+
+
+    .header::after {
+        width: 340px;
+
+        font-size: 72px;
+    }
+
+
+    .header > h2,
+    .header > p {
+        margin-left: 42px;
+    }
+
+
+    .header h2 {
+        font-size: 40px;
+    }
+
+
+    .header p {
+        font-size: 15px;
+    }
+
+
+    th {
+        padding: 17px 23px;
+    }
+
+
+    td {
+        padding: 19px 23px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+    body {
+        padding: 20px;
+    }
+
+
+    .header {
+        grid-template-columns: 1fr 210px;
+
+        min-height: 180px;
+    }
+
+
+    .header::after {
+        width: 210px;
+
+        font-size: 50px;
+    }
+
+
+    .header > h2,
+    .header > p {
+        margin-left: 30px;
+    }
+
+
+    .header h2 {
+        font-size: 29px;
+    }
+
+
+    .header p {
+        max-width: 520px;
+
+        font-size: 13px;
+    }
+
+
+    .menu {
+        top: 17px;
+
+        left: 24px;
+    }
+
+
+    .table-box::before {
+        padding: 18px 20px;
+    }
+
+
+    th,
+    td {
+        padding: 14px 16px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    body {
+        padding: 12px;
+
+        background:
+            linear-gradient(
+                160deg,
+                #f0fdf4,
+                #f8fafc
+            );
+    }
+
+
+    body.dark-mode {
+
+        background:
+            linear-gradient(
+                160deg,
+                #07130d,
+                #0b1711
+            );
+    }
+
+
+    .container {
+        width: 100%;
+    }
+
+
+    /* HEADER MENJADI VERTIKAL */
+
+    .header {
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        min-height: auto;
+
+        padding: 25px 20px 20px;
+
+        border-radius: 19px;
+    }
+
+
+    /* MATIKAN PANEL SAMPING */
+
+    .header::after {
+        display: none;
+    }
+
+
+    .header::before {
+        display: none;
+    }
+
+
+    /* MENU PINDAH KE ATAS */
+
+    .menu {
+        position: static;
+
+        order: 1;
+
+        width: 100%;
+
+        margin-bottom: 20px;
+
+        display: grid;
+
+        grid-template-columns: 1fr 52px;
+
+        gap: 8px;
+    }
+
+
+    .header h2 {
+        order: 2;
+
+        margin: 0 0 8px;
+
+        font-size: 24px;
+
+        line-height: 1.25;
+    }
+
+
+    .header p {
+        order: 3;
+
+        margin: 0;
+
+        max-width: 100%;
+
+        font-size: 12px;
+
+        line-height: 1.65;
+    }
+
+
+    .btn {
+        width: 100%;
+
+        min-height: 40px;
+
+        padding: 9px 10px;
+
+        font-size: 11px;
+    }
+
+
+    .theme-toggle {
+        width: 52px;
+
+        min-width: 52px;
+
+        font-size: 18px;
+    }
+
+
+    /* TABLE */
+
+    .table-box {
+        border-radius: 17px;
+    }
+
+
+    .table-box::before {
+        padding: 16px 17px;
+
+        font-size: 14px;
+    }
+
+
+    table {
+        min-width: 780px;
+    }
+
+
+    th {
+        padding: 12px 13px;
+
+        font-size: 10px;
+    }
+
+
+    td {
+        padding: 12px 13px;
+
+        font-size: 11px;
+    }
+
+
+    .badge {
+        min-width: 82px;
+
+        padding: 6px 9px;
+
+        font-size: 9px;
+    }
+
+
+    .btn-kembali {
+        min-width: 85px;
+
+        padding: 8px 10px;
+
+        font-size: 10px;
+    }
+
+
+    .footer {
+        padding: 14px;
+
+        font-size: 10px;
+    }
+
+
+    body.dark-mode .header {
+
+        background: #101a14;
+    }
+
+
+    body.dark-mode .table-box {
+
+        background: #101a14;
+    }
+
+
+    body.dark-mode .table-box::before {
+
+        background: #101a14;
+    }
+
+
+    body.dark-mode thead {
+
+        background: #142119;
+    }
+
+
+    body.dark-mode tbody tr {
+
+        background: #101a14;
+    }
+
+
+    body.dark-mode tbody tr:nth-child(even) {
+
+        background: #0e1812;
+    }
+
+
+    body.dark-mode tbody tr:hover {
+
+        background: #14291c;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    body {
+        padding: 9px;
+    }
+
+
+    .header {
+        padding: 21px 16px 18px;
+
+        border-radius: 16px;
+    }
+
+
+    .menu {
+        grid-template-columns: 1fr 48px;
+    }
+
+
+    .theme-toggle {
+        width: 48px;
+
+        min-width: 48px;
+    }
+
+
+    .header h2 {
+        font-size: 21px;
+    }
+
+
+    .header p {
+        font-size: 11px;
+    }
+
+
+    .table-box::before {
+        padding: 14px 15px;
+
+        font-size: 12px;
+    }
+
+
+    table {
+        min-width: 720px;
     }
 }

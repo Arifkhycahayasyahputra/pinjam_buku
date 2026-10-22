@@ -1,154 +1,1300 @@
-   * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
 
-        body {
-            background: #f1f5f9;
-            padding: 30px;
-        }
+/* =========================================================
+   RESET
+========================================================= */
 
-        /* CONTAINER */
-        .container {
-            max-width: 1400px;
-            margin: auto;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
 
-        /* HEADER */
-        .top-bar {
-            background: linear-gradient(135deg, #60a5fa, #2563eb);
-            color: white;
-            padding: 25px 30px;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
-        }
 
-        .top-bar h2 {
-            font-size: 30px;
-            margin-bottom: 5px;
-        }
+/* =========================================================
+   BODY
+========================================================= */
 
-        .top-bar p {
-            opacity: 0.9;
-        }
+body {
+    min-height: 100vh;
+    padding: 30px 4%;
 
-        /* MENU */
-        .menu {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
-        }
+    color: #183b2a;
 
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+    background:
+        radial-gradient(
+            circle at 0% 0%,
+            rgba(134, 239, 172, 0.28),
+            transparent 23%
+        ),
+        radial-gradient(
+            circle at 100% 100%,
+            rgba(74, 222, 128, 0.16),
+            transparent 27%
+        ),
+        linear-gradient(
+            135deg,
+            #f0fdf4 0%,
+            #f8fafc 50%,
+            #ecfdf5 100%
+        );
 
-        /* BUTTON */
-        .btn {
-            padding: 12px 20px;
-            text-decoration: none;
-            border-radius: 12px;
-            color: white;
-            font-weight: bold;
-            transition: .3s;
-            display: inline-block;
-        }
+    overflow-x: hidden;
+}
 
-        .btn:hover {
-            transform: translateY(-3px);
-        }
 
-        .dashboard {
-            background: #0f172a;
-        }
+/* =========================================================
+   CONTAINER
+========================================================= */
 
-        .tambah {
-            background: #16a34a;
-        }
+.container {
+    width: 100%;
+    max-width: 1500px;
+    margin: auto;
+}
 
-        .logout {
-            background: #dc2626;
-        }
 
-        .riwayat {
-            background: #7c3aed;
-        }
+/* =========================================================
+   HEADER AREA
+========================================================= */
 
-        .buku {
-            background: #0284c7;
-        }
+.top-bar {
+    position: relative;
 
-        /* TABLE BOX */
-        .table-box {
-            background: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-            overflow-x: auto;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-        /* TABLE */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+    min-height: 150px;
 
-        thead {
-            background: #2563eb;
-            color: white;
-        }
+    padding: 32px 38px;
 
-        th,
-        td {
-            padding: 15px;
-            text-align: center;
-        }
+    margin-bottom: 18px;
 
-        tbody tr {
-            border-bottom: 1px solid #e2e8f0;
-            transition: .3s;
-        }
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f6fdf8 100%
+        );
 
-        tbody tr:hover {
-            background: #eff6ff;
-        }
+    border: 1px solid #dcefe2;
 
-        /* ACTION */
-        .aksi a {
-            padding: 8px 14px;
-            border-radius: 8px;
-            text-decoration: none;
-            color: white;
-            font-size: 14px;
-            margin: 3px;
-            display: inline-block;
-        }
+    border-radius: 25px;
 
-        .edit {
-            background: #f59e0b;
-        }
+    box-shadow:
+        0 16px 40px rgba(22, 101, 52, 0.08);
 
-        .hapus {
-            background: #ef4444;
-        }
+    overflow: hidden;
+}
 
-        /* FOOTER */
-        .footer {
-            margin-top: 20px;
-            text-align: center;
-            color: #64748b;
-        }
 
-        /* RESPONSIVE */
-        @media(max-width:768px) {
-            .menu {
-                flex-direction: column;
-            }
-        }
+/* =========================================================
+   HEADER DECORATION
+========================================================= */
+
+.top-bar::before {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    right: -110px;
+    top: -150px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(134, 239, 172, 0.28),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+.top-bar::after {
+    content: "📚";
+
+    position: absolute;
+
+    right: 38px;
+    bottom: -30px;
+
+    font-size: 105px;
+
+    opacity: 0.055;
+
+    transform: rotate(-8deg);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADER CONTENT
+========================================================= */
+
+.top-bar > div {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   HEADER TITLE
+========================================================= */
+
+.top-bar h2 {
+    color: #14532d;
+
+    font-size: clamp(26px, 3vw, 38px);
+
+    font-weight: 750;
+
+    letter-spacing: -1px;
+
+    line-height: 1.15;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   HEADER DESCRIPTION
+========================================================= */
+
+.top-bar p {
+    max-width: 650px;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   MENU BAR
+========================================================= */
+
+.menu {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 12px 14px;
+
+    margin-bottom: 22px;
+
+    background:
+        rgba(255, 255, 255, 0.94);
+
+    border:
+        1px solid #dfeee4;
+
+    border-radius: 17px;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.045);
+}
+
+
+/* =========================================================
+   BUTTON GROUP
+========================================================= */
+
+.btn-group {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    min-height: 39px;
+
+    padding: 9px 15px;
+
+    color: #166534;
+
+    background: #f3fbf5;
+
+    border:
+        1px solid #d5ecdc;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 650;
+
+    white-space: nowrap;
+
+    transition:
+        .25s ease;
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+========================================================= */
+
+.btn:hover {
+    transform: translateY(-2px);
+
+    background: #dcfce7;
+
+    border-color: #a7e8ba;
+
+    box-shadow:
+        0 6px 15px rgba(22, 101, 52, 0.09);
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.dashboard {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #166534,
+            #15803d
+        );
+
+    border-color: #15803d;
+
+    box-shadow:
+        0 6px 15px rgba(22, 101, 52, 0.16);
+}
+
+
+.dashboard:hover {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #15803d,
+            #16a34a
+        );
+
+    border-color: #16a34a;
+}
+
+
+/* =========================================================
+   TAMBAH
+========================================================= */
+
+.tambah {
+    color: #15803d;
+
+    background: #ecfdf5;
+
+    border-color: #bbf7d0;
+}
+
+
+/* =========================================================
+   RIWAYAT
+========================================================= */
+
+.riwayat {
+    color: #166534;
+
+    background: #f5fbf7;
+
+    border-color: #d8eee0;
+}
+
+
+/* =========================================================
+   BUKU
+========================================================= */
+
+.buku {
+    color: #166534;
+
+    background: #f7fcf8;
+
+    border-color: #dcefe2;
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.logout {
+    min-width: 90px;
+
+    color: #b91c1c;
+
+    background: #fff7f7;
+
+    border-color: #fecaca;
+}
+
+
+.logout:hover {
+    color: #ffffff;
+
+    background: #dc2626;
+
+    border-color: #dc2626;
+
+    box-shadow:
+        0 7px 16px rgba(220, 38, 38, 0.15);
+}
+
+
+/* =========================================================
+   TABLE PANEL
+========================================================= */
+
+.table-box {
+    position: relative;
+
+    width: 100%;
+
+    padding: 7px;
+
+    background:
+        rgba(255, 255, 255, 0.97);
+
+    border:
+        1px solid #dfeee4;
+
+    border-radius: 23px;
+
+    box-shadow:
+        0 18px 45px rgba(15, 23, 42, 0.065);
+
+    overflow-x: auto;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #a7e8ba
+        #f0fdf4;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+.table-box::-webkit-scrollbar {
+    height: 7px;
+}
+
+
+.table-box::-webkit-scrollbar-track {
+    background: #f0fdf4;
+
+    border-radius: 10px;
+}
+
+
+.table-box::-webkit-scrollbar-thumb {
+    background: #a7e8ba;
+
+    border-radius: 10px;
+}
+
+
+.table-box::-webkit-scrollbar-thumb:hover {
+    background: #86efac;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+table {
+    width: 100%;
+
+    min-width: 900px;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+thead {
+    background:
+        linear-gradient(
+            135deg,
+            #166534,
+            #15803d
+        );
+}
+
+
+th {
+    padding: 16px 18px;
+
+    color: #ffffff;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    font-weight: 650;
+
+    letter-spacing: .25px;
+
+    white-space: nowrap;
+
+    border: none;
+}
+
+
+/* =========================================================
+   TABLE HEADER RADIUS
+========================================================= */
+
+th:first-child {
+    border-top-left-radius: 16px;
+}
+
+
+th:last-child {
+    border-top-right-radius: 16px;
+}
+
+
+/* =========================================================
+   TABLE DATA
+========================================================= */
+
+td {
+    padding: 16px 18px;
+
+    color: #334155;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    vertical-align: middle;
+
+    border-bottom:
+        1px solid #edf3ef;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TABLE ROW
+========================================================= */
+
+tbody tr {
+    background: #ffffff;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+
+/* =========================================================
+   ALTERNATE ROW
+========================================================= */
+
+tbody tr:nth-child(even) {
+    background: #fbfefc;
+}
+
+
+/* =========================================================
+   ROW HOVER
+========================================================= */
+
+tbody tr:hover {
+    background: #f0fdf4;
+}
+
+
+/* =========================================================
+   LAST ROW
+========================================================= */
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   ACTION AREA
+========================================================= */
+
+.aksi {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    flex-wrap: nowrap;
+}
+
+
+/* =========================================================
+   ACTION BUTTON
+========================================================= */
+
+.aksi a {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 65px;
+
+    padding: 8px 11px;
+
+    border-radius: 9px;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 650;
+
+    white-space: nowrap;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.aksi a:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   EDIT
+========================================================= */
+
+.edit {
+    background:
+        linear-gradient(
+            135deg,
+            #f59e0b,
+            #d97706
+        );
+
+    box-shadow:
+        0 5px 12px rgba(245, 158, 11, .16);
+}
+
+
+.edit:hover {
+    box-shadow:
+        0 8px 17px rgba(245, 158, 11, .23);
+}
+
+
+/* =========================================================
+   HAPUS
+========================================================= */
+
+.hapus {
+    background:
+        linear-gradient(
+            135deg,
+            #ef4444,
+            #dc2626
+        );
+
+    box-shadow:
+        0 5px 12px rgba(239, 68, 68, .15);
+}
+
+
+.hapus:hover {
+    box-shadow:
+        0 8px 17px rgba(239, 68, 68, .22);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    margin-top: 20px;
+
+    padding: 17px;
+
+    text-align: center;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1450px) {
+
+    body {
+        padding: 42px 5%;
+    }
+
+
+    .top-bar {
+        min-height: 165px;
+
+        padding: 38px 45px;
+    }
+
+
+    .top-bar h2 {
+        font-size: 40px;
+    }
+
+
+    .top-bar p {
+        font-size: 15px;
+    }
+
+
+    .menu {
+        padding: 14px 17px;
+    }
+
+
+    th,
+    td {
+        padding: 18px 21px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+    body {
+        padding: 25px 20px;
+    }
+
+
+    .top-bar {
+        min-height: 140px;
+
+        padding: 28px;
+    }
+
+
+    .top-bar::after {
+        right: 25px;
+
+        font-size: 80px;
+    }
+
+
+    .menu {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        padding: 12px;
+    }
+
+
+    .btn-group {
+        width: 100%;
+    }
+
+
+    .btn {
+        flex: 1;
+    }
+
+
+    .logout {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 12px;
+
+        background:
+            linear-gradient(
+                160deg,
+                #f0fdf4,
+                #f8fafc
+            );
+    }
+
+
+    .top-bar {
+        display: block;
+
+        min-height: auto;
+
+        padding: 23px 20px;
+
+        margin-bottom: 12px;
+
+        border-radius: 19px;
+    }
+
+
+    .top-bar h2 {
+        padding-right: 35px;
+
+        font-size: 23px;
+
+        line-height: 1.2;
+    }
+
+
+    .top-bar p {
+        padding-right: 20px;
+
+        font-size: 12px;
+
+        line-height: 1.6;
+    }
+
+
+    .top-bar::after {
+        right: 7px;
+
+        bottom: -14px;
+
+        font-size: 65px;
+    }
+
+
+    .menu {
+        gap: 9px;
+
+        margin-bottom: 14px;
+
+        padding: 10px;
+
+        border-radius: 15px;
+    }
+
+
+    .btn-group {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 6px;
+    }
+
+
+    .btn {
+        width: 100%;
+
+        min-height: 38px;
+
+        padding: 8px 6px;
+
+        font-size: 10px;
+    }
+
+
+    .logout {
+        width: 100%;
+
+        min-height: 38px;
+    }
+
+
+    .table-box {
+        padding: 5px;
+
+        border-radius: 17px;
+    }
+
+
+    table {
+        min-width: 800px;
+    }
+
+
+    th {
+        padding: 12px 10px;
+
+        font-size: 10px;
+    }
+
+
+    td {
+        padding: 12px 10px;
+
+        font-size: 11px;
+    }
+
+
+    .aksi {
+        gap: 4px;
+    }
+
+
+    .aksi a {
+        min-width: 55px;
+
+        padding: 7px 8px;
+
+        font-size: 10px;
+    }
+
+
+    .footer {
+        margin-top: 12px;
+
+        padding: 14px;
+
+        font-size: 11px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    body {
+        padding: 9px;
+    }
+
+
+    .top-bar {
+        padding: 20px 17px;
+    }
+
+
+    .top-bar h2 {
+        font-size: 21px;
+    }
+
+
+    .top-bar p {
+        font-size: 11px;
+    }
+
+
+    .btn-group {
+        grid-template-columns: 1fr;
+    }
+
+
+    .btn {
+        min-height: 36px;
+
+        font-size: 11px;
+    }
+
+
+    table {
+        min-width: 760px;
+    }
+}
+
+/* =========================================================
+   LIGHT / DARK MODE BUTTON
+========================================================= */
+
+.theme-toggle {
+    width: 39px;
+    height: 39px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid #d5ecdc;
+    border-radius: 10px;
+
+    background: #f3fbf5;
+    color: #166534;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+
+    background: #dcfce7;
+
+    border-color: #a7e8ba;
+
+    box-shadow:
+        0 6px 15px rgba(22, 101, 52, 0.10);
+}
+
+
+/* =========================================================
+   DARK MODE - BODY
+========================================================= */
+
+body.dark-mode {
+
+    color: #e5e7eb;
+
+    background:
+        radial-gradient(
+            circle at 0% 0%,
+            rgba(34, 197, 94, 0.10),
+            transparent 23%
+        ),
+        radial-gradient(
+            circle at 100% 100%,
+            rgba(22, 163, 74, 0.08),
+            transparent 27%
+        ),
+        linear-gradient(
+            135deg,
+            #0f172a 0%,
+            #111827 50%,
+            #0f1f19 100%
+        );
+}
+
+
+/* =========================================================
+   DARK MODE - HEADER
+========================================================= */
+
+body.dark-mode .top-bar {
+
+    background:
+        linear-gradient(
+            135deg,
+            #172a20 0%,
+            #1f2937 100%
+        );
+
+    border-color:
+        #374151;
+
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.25);
+}
+
+
+/* JUDUL HEADER */
+
+body.dark-mode .top-bar h2 {
+
+    color:
+        #86efac;
+}
+
+
+/* DESKRIPSI */
+
+body.dark-mode .top-bar p {
+
+    color:
+        #9ca3af;
+}
+
+
+/* =========================================================
+   DARK MODE - MENU
+========================================================= */
+
+body.dark-mode .menu {
+
+    background:
+        rgba(17, 24, 39, 0.94);
+
+    border-color:
+        #374151;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.20);
+}
+
+
+/* BUTTON UMUM */
+
+body.dark-mode .btn {
+
+    color:
+        #d1fae5;
+
+    background:
+        #1f2937;
+
+    border-color:
+        #374151;
+}
+
+
+body.dark-mode .btn:hover {
+
+    background:
+        #26382f;
+
+    border-color:
+        #4b5563;
+}
+
+
+/* DASHBOARD */
+
+body.dark-mode .dashboard {
+
+    color:
+        #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #166534,
+            #15803d
+        );
+
+    border-color:
+        #15803d;
+}
+
+
+/* TAMBAH */
+
+body.dark-mode .tambah {
+
+    color:
+        #86efac;
+
+    background:
+        #163222;
+
+    border-color:
+        #166534;
+}
+
+
+/* TOMBOL TEMA */
+
+body.dark-mode .theme-toggle {
+
+    background:
+        #1f2937;
+
+    color:
+        #ffffff;
+
+    border-color:
+        #374151;
+}
+
+
+body.dark-mode .theme-toggle:hover {
+
+    background:
+        #374151;
+
+    border-color:
+        #4b5563;
+}
+
+
+/* =========================================================
+   DARK MODE - TABLE BOX
+========================================================= */
+
+body.dark-mode .table-box {
+
+    background:
+        rgba(31, 41, 55, 0.96);
+
+    border-color:
+        #374151;
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   DARK MODE - TABLE
+========================================================= */
+
+body.dark-mode td {
+
+    color:
+        #d1d5db;
+
+    border-bottom-color:
+        #374151;
+}
+
+
+body.dark-mode tbody tr {
+
+    background:
+        #1f2937;
+}
+
+
+body.dark-mode tbody tr:nth-child(even) {
+
+    background:
+        #243244;
+}
+
+
+body.dark-mode tbody tr:hover {
+
+    background:
+        #263f32;
+}
+
+
+/* =========================================================
+   DARK MODE - AKSI
+========================================================= */
+
+body.dark-mode .edit {
+
+    color:
+        #ffffff;
+}
+
+
+body.dark-mode .hapus {
+
+    color:
+        #ffffff;
+}
+
+
+/* =========================================================
+   DARK MODE - FOOTER
+========================================================= */
+
+body.dark-mode .footer {
+
+    color:
+        #64748b;
+}
+
+
+/* =========================================================
+   TRANSISI TEMA
+========================================================= */
+
+body,
+.top-bar,
+.menu,
+.table-box,
+tbody tr,
+td,
+.btn,
+.theme-toggle,
+.footer {
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+
+/* =========================================================
+   THEME BUTTON - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .theme-toggle {
+
+        width: 100%;
+
+        min-height: 38px;
+
+        border-radius: 9px;
+
+        font-size: 16px;
+    }
+
+}

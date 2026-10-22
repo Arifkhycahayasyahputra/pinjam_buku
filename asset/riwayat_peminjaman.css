@@ -1,140 +1,1510 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+\/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
-body{
-    background:linear-gradient(135deg,#e0f2fe,#f8fafc);
-    padding:30px;
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+    min-height: 100vh;
+    padding: 35px 4%;
+
+    color: #183b2a;
+
+    background:
+        radial-gradient(
+            circle at 0% 0%,
+            rgba(134, 239, 172, 0.28),
+            transparent 24%
+        ),
+        radial-gradient(
+            circle at 100% 100%,
+            rgba(74, 222, 128, 0.18),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #effdf4,
+            #f8fafc 48%,
+            #ecfdf5
+        );
+
+    overflow-x: hidden;
 }
 
-/* CONTAINER */
-.container{
-    max-width:1400px;
-    margin:auto;
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container {
+    width: 100%;
+    max-width: 1500px;
+    margin: auto;
 }
 
-/* HEADER */
-.header{
-    background:linear-gradient(135deg,#2563eb,#1d4ed8);
-    padding:30px;
-    border-radius:22px;
-    color:white;
-    margin-bottom:25px;
-    box-shadow:0 12px 30px rgba(37,99,235,0.3);
+
+/* =========================================================
+   TOP SECTION
+========================================================= */
+
+.header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 35px;
+
+    padding: 30px 34px;
+
+    margin-bottom: 22px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border: 1px solid #dcefe2;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 18px 45px rgba(22, 101, 52, 0.08);
+
+    overflow: hidden;
 }
 
-.header h2{
-    font-size:32px;
-    margin-bottom:5px;
+
+/* =========================================================
+   HEADER DECORATION
+========================================================= */
+
+.header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 230px;
+    height: 230px;
+
+    right: -110px;
+    top: -125px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(134, 239, 172, 0.25),
+            transparent 70%
+        );
+
+    pointer-events: none;
 }
 
-.header p{
-    opacity:.9;
+
+/* =========================================================
+   HEADER CONTENT
+========================================================= */
+
+.header-content {
+    position: relative;
+
+    z-index: 2;
+
+    flex: 1;
 }
 
-/* BUTTON */
-.menu{
-    margin-top:18px;
+
+/* =========================================================
+   HEADER LABEL
+========================================================= */
+
+.header-label {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 10px;
+
+    padding: 6px 11px;
+
+    color: #15803d;
+
+    background: #ecfdf5;
+
+    border: 1px solid #bbf7d0;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: .3px;
 }
 
-.btn{
-    display:inline-block;
-    padding:12px 18px;
-    border-radius:12px;
-    text-decoration:none;
-    font-weight:bold;
-    color:white;
-    transition:.3s;
+
+/* =========================================================
+   HEADER LABEL ICON
+========================================================= */
+
+.header-label::before {
+    content: "●";
+
+    font-size: 8px;
+
+    color: #22c55e;
 }
 
-.btn:hover{
-    transform:translateY(-3px);
+
+/* =========================================================
+   HEADER TITLE
+========================================================= */
+
+.header h2 {
+    color: #14532d;
+
+    font-size: clamp(26px, 3vw, 36px);
+
+    font-weight: 750;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.7px;
+
+    margin-bottom: 8px;
 }
 
-.dashboard{
-    background:#0f172a;
-    box-shadow:0 6px 15px rgba(0,0,0,0.2);
+
+/* =========================================================
+   HEADER DESCRIPTION
+========================================================= */
+
+.header p {
+    max-width: 650px;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.7;
 }
 
-/* TABLE BOX */
-.table-box{
-    background:white;
-    padding:25px;
-    border-radius:22px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-    overflow-x:auto;
+
+/* =========================================================
+   HEADER SIDE
+========================================================= */
+
+.header-side {
+    position: relative;
+
+    z-index: 3;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 10px;
+
+    flex-shrink: 0;
 }
 
-/* TABLE */
-table{
-    width:100%;
-    border-collapse:collapse;
+
+/* =========================================================
+   BOOK ICON
+========================================================= */
+
+.book-icon {
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 2px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #dcfce7,
+            #bbf7d0
+        );
+
+    border: 1px solid #bbf7d0;
+
+    border-radius: 17px;
+
+    font-size: 29px;
+
+    box-shadow:
+        0 10px 24px rgba(34, 197, 94, 0.13);
 }
 
-thead{
-    background:linear-gradient(135deg,#3b82f6,#2563eb);
-    color:white;
+
+/* =========================================================
+   DASHBOARD BUTTON
+========================================================= */
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 42px;
+
+    padding: 10px 17px;
+
+    color: #15803d;
+
+    background: #f0fdf4;
+
+    border: 1px solid #bbf7d0;
+
+    border-radius: 11px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    transition: .25s ease;
 }
 
-th,td{
-    padding:18px;
-    text-align:center;
+
+/* =========================================================
+   BUTTON ICON
+========================================================= */
+
+.dashboard::before {
+    content: "←";
+
+    font-size: 17px;
 }
 
-tbody tr{
-    border-bottom:1px solid #e2e8f0;
-    transition:.3s;
+
+/* =========================================================
+   BUTTON HOVER
+========================================================= */
+
+.btn:hover {
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #16a34a
+        );
+
+    border-color: #16a34a;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(34, 197, 94, .18);
 }
 
-tbody tr:hover{
-    background:#eff6ff;
-    transform:scale(1.01);
+
+/* =========================================================
+   DATA PANEL
+========================================================= */
+
+.table-box {
+    position: relative;
+
+    background:
+        rgba(255, 255, 255, 0.96);
+
+    border: 1px solid #dfeee4;
+
+    border-radius: 23px;
+
+    box-shadow:
+        0 18px 45px rgba(15, 23, 42, 0.065);
+
+    overflow: hidden;
 }
 
-/* BADGE STATUS */
-.badge{
-    padding:6px 12px;
-    border-radius:20px;
-    font-size:13px;
-    font-weight:bold;
+
+/* =========================================================
+   DATA PANEL HEADER
+========================================================= */
+
+.table-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 22px 25px;
+
+    border-bottom: 1px solid #e7f2ea;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #fbfefc
+        );
 }
 
-.pinjam{
-    background:#fef3c7;
-    color:#d97706;
+
+/* =========================================================
+   TABLE TITLE
+========================================================= */
+
+.table-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
 }
 
-.kembali{
-    background:#dcfce7;
-    color:#16a34a;
+
+/* =========================================================
+   TABLE TITLE ICON
+========================================================= */
+
+.table-title-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #ecfdf5;
+
+    border: 1px solid #bbf7d0;
+
+    border-radius: 12px;
+
+    font-size: 19px;
 }
 
-/* EMPTY */
-.empty{
-    padding:20px;
-    color:#64748b;
-    font-weight:bold;
+
+/* =========================================================
+   TABLE TITLE TEXT
+========================================================= */
+
+.table-title h3 {
+    color: #14532d;
+
+    font-size: 17px;
+
+    font-weight: 750;
+
+    margin-bottom: 3px;
 }
 
-/* FOOTER */
-.footer{
-    text-align:center;
-    margin-top:25px;
-    color:#64748b;
-    font-size:14px;
+
+.table-title p {
+    color: #94a3b8;
+
+    font-size: 11px;
 }
 
-/* RESPONSIVE */
-@media(max-width:768px){
-    body{
-        padding:15px;
+
+/* =========================================================
+   TABLE INFO
+========================================================= */
+
+.table-info {
+    padding: 7px 11px;
+
+    color: #15803d;
+
+    background: #f0fdf4;
+
+    border: 1px solid #dcfce7;
+
+    border-radius: 999px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+========================================================= */
+
+.table-scroll {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+.table-scroll::-webkit-scrollbar {
+    height: 7px;
+}
+
+.table-scroll::-webkit-scrollbar-track {
+    background: #f0fdf4;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+    background: #bbf7d0;
+
+    border-radius: 10px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb:hover {
+    background: #86efac;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+table {
+    width: 100%;
+
+    min-width: 900px;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+}
+
+
+/* =========================================================
+   TABLE HEAD
+========================================================= */
+
+thead {
+    background:
+        linear-gradient(
+            135deg,
+            #166534,
+            #15803d
+        );
+}
+
+
+/* =========================================================
+   TABLE HEADER CELL
+========================================================= */
+
+th {
+    padding: 15px 18px;
+
+    color: white;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    font-weight: 650;
+
+    letter-spacing: .2px;
+
+    white-space: nowrap;
+
+    border: none;
+}
+
+
+/* =========================================================
+   FIRST / LAST HEADER
+========================================================= */
+
+th:first-child {
+    text-align: left;
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+td {
+    padding: 16px 18px;
+
+    color: #334155;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    border-bottom: 1px solid #edf3ef;
+
+    vertical-align: middle;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   FIRST COLUMN
+========================================================= */
+
+td:first-child {
+    text-align: left;
+
+    color: #14532d;
+
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   ROW
+========================================================= */
+
+tbody tr {
+    background: #ffffff;
+
+    transition:
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+
+/* =========================================================
+   ZEBRA
+========================================================= */
+
+tbody tr:nth-child(even) {
+    background: #fbfefc;
+}
+
+
+/* =========================================================
+   HOVER ROW
+========================================================= */
+
+tbody tr:hover {
+    background: #f0fdf4;
+
+    box-shadow:
+        inset 4px 0 0 #22c55e;
+}
+
+
+/* =========================================================
+   LAST ROW
+========================================================= */
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   STATUS BADGE
+========================================================= */
+
+.badge {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    min-width: 105px;
+
+    padding: 7px 13px;
+
+    border-radius: 999px;
+
+    font-size: 10px;
+
+    font-weight: 750;
+
+    letter-spacing: .2px;
+}
+
+
+/* =========================================================
+   STATUS DOT
+========================================================= */
+
+.badge::before {
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   STATUS DIPINJAM
+========================================================= */
+
+.pinjam {
+    color: #c2410c;
+
+    background: #fff7ed;
+
+    border: 1px solid #fed7aa;
+}
+
+
+.pinjam::before {
+    background: #f97316;
+}
+
+
+/* =========================================================
+   STATUS DIKEMBALIKAN
+========================================================= */
+
+.kembali {
+    color: #15803d;
+
+    background: #ecfdf5;
+
+    border: 1px solid #bbf7d0;
+}
+
+
+.kembali::before {
+    background: #22c55e;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty {
+    padding: 60px 20px;
+
+    text-align: center;
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    background: #fbfefc;
+}
+
+
+/* =========================================================
+   EMPTY ICON
+========================================================= */
+
+.empty::before {
+    content: "📚";
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 38px;
+
+    opacity: .55;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    padding: 22px 10px 5px;
+
+    text-align: center;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   LARGE SCREEN
+========================================================= */
+
+@media (min-width: 1400px) {
+
+    body {
+        padding: 45px 5%;
     }
 
-    th,td{
-        padding:12px;
-        font-size:13px;
+    .header {
+        padding: 34px 40px;
     }
+
+    .table-header {
+        padding: 24px 28px;
+    }
+
+    th,
+    td {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    body {
+        padding: 25px 20px;
+    }
+
+    .header {
+        padding: 27px 28px;
+    }
+
+    .header h2 {
+        font-size: 28px;
+    }
+
+    .header p {
+        font-size: 13px;
+    }
+
+    .book-icon {
+        width: 55px;
+        height: 55px;
+
+        font-size: 25px;
+    }
+
+    .table-header {
+        padding: 20px;
+    }
+
+    th,
+    td {
+        padding: 14px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 13px;
+
+        background:
+            linear-gradient(
+                160deg,
+                #effdf4,
+                #f8fafc
+            );
+    }
+
+
+    .header {
+        display: block;
+
+        padding: 23px 20px;
+
+        border-radius: 20px;
+    }
+
+
+    .header-content {
+        width: 100%;
+    }
+
+
+    .header h2 {
+        max-width: 80%;
+
+        font-size: 24px;
+    }
+
+
+    .header p {
+        max-width: 100%;
+
+        font-size: 12px;
+    }
+
+
+    .header-side {
+        flex-direction: row;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        margin-top: 18px;
+
+        width: 100%;
+    }
+
+
+    .book-icon {
+        width: 48px;
+        height: 48px;
+
+        border-radius: 13px;
+
+        font-size: 22px;
+    }
+
+
+    .btn {
+        min-height: 39px;
+
+        padding: 9px 13px;
+
+        font-size: 11px;
+    }
+
+
+    .table-box {
+        border-radius: 18px;
+    }
+
+
+    .table-header {
+        align-items: flex-start;
+
+        padding: 17px;
+
+        flex-direction: column;
+
+        gap: 13px;
+    }
+
+
+    .table-title-icon {
+        width: 38px;
+        height: 38px;
+
+        font-size: 17px;
+    }
+
+
+    .table-title h3 {
+        font-size: 15px;
+    }
+
+
+    .table-title p {
+        font-size: 10px;
+    }
+
+
+    .table-info {
+        align-self: flex-start;
+    }
+
+
+    table {
+        min-width: 850px;
+    }
+
+
+    th {
+        padding: 12px 13px;
+
+        font-size: 10px;
+    }
+
+
+    td {
+        padding: 12px 13px;
+
+        font-size: 11px;
+    }
+
+
+    .badge {
+        min-width: 82px;
+
+        padding: 6px 9px;
+
+        font-size: 9px;
+    }
+
+
+    .footer {
+        padding-top: 18px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    body {
+        padding: 10px;
+    }
+
+
+    .header {
+        padding: 20px 17px;
+    }
+
+
+    .header h2 {
+        font-size: 21px;
+    }
+
+
+    .header p {
+        font-size: 11px;
+    }
+
+
+    .table-header {
+        padding: 15px;
+    }
+
+
+    .header-label {
+        font-size: 9px;
+    }
+}
+
+/*
+==========================================================
+TOMBOL DENDA
+==========================================================
+*/
+
+.btn-denda {
+
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    margin: 2px;
+
+    background: #f59e0b;
+
+    color: white;
+
+    border-radius: 5px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+}
+
+
+.btn-denda:hover {
+
+    background: #d97706;
+
+}
+
+
+/*
+==========================================================
+TOMBOL BAYAR
+==========================================================
+*/
+
+.btn-bayar {
+
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    margin: 2px;
+
+    background: #16a34a;
+
+    color: white;
+
+    border-radius: 5px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+}
+
+
+.btn-bayar:hover {
+
+    background: #15803d;
+
+}
+
+
+/*
+==========================================================
+ITEM DENDA
+==========================================================
+*/
+
+.denda-item {
+
+    margin-bottom: 5px;
+
+}
+
+
+/*
+==========================================================
+STATUS DENDA
+==========================================================
+*/
+
+.status-belum {
+
+    display: inline-block;
+
+    background: #fff3cd;
+
+    color: #856404;
+
+    padding: 6px 10px;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+
+}
+
+
+.status-lunas {
+
+    display: inline-block;
+
+    background: #d4edda;
+
+    color: #155724;
+
+    padding: 6px 10px;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+
+}
+
+
+.status-tidak-ada {
+
+    display: inline-block;
+
+    background: #e2e3e5;
+
+    color: #383d41;
+
+    padding: 6px 10px;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+
+}
+
+
+/*
+==========================================================
+MENU HEADER
+==========================================================
+*/
+
+.menu {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 15px;
+
+}
+
+
+/*
+==========================================================
+TOMBOL LIGHT / DARK MODE
+==========================================================
+*/
+
+.theme-toggle {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid #bbf7d0;
+
+    border-radius: 10px;
+
+    background: #f0fdf4;
+
+    color: #166534;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+
+}
+
+
+.theme-toggle:hover {
+
+    transform: translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #15803d
+        );
+
+    color: white;
+
+    border-color: #22c55e;
+
+    box-shadow:
+        0 8px 18px
+        rgba(34, 197, 94, .18);
+
+}
+
+
+/*
+==========================================================
+DARK MODE
+==========================================================
+*/
+
+body.dark-mode {
+
+    color: #e5e7eb;
+
+    background:
+        radial-gradient(
+            circle at 0% 0%,
+            rgba(34, 197, 94, .10),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 100% 100%,
+            rgba(22, 163, 74, .08),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #0f172a 0%,
+            #111827 50%,
+            #0f1f19 100%
+        );
+
+}
+
+
+/*
+==========================================================
+DARK MODE - HEADER
+==========================================================
+*/
+
+body.dark-mode .header {
+
+    background:
+        linear-gradient(
+            135deg,
+            #172a20,
+            #1f2937
+        );
+
+    border-color: #374151;
+
+    box-shadow:
+        0 18px 45px
+        rgba(0, 0, 0, .28);
+
+}
+
+
+body.dark-mode .header h2 {
+
+    color: #86efac;
+
+}
+
+
+body.dark-mode .header p {
+
+    color: #9ca3af;
+
+}
+
+
+/*
+==========================================================
+DARK MODE - TABLE BOX
+==========================================================
+*/
+
+body.dark-mode .table-box {
+
+    background: #1f2937;
+
+    border-color: #374151;
+
+    box-shadow:
+        0 18px 45px
+        rgba(0, 0, 0, .28);
+
+}
+
+
+/*
+==========================================================
+DARK MODE - TABLE
+==========================================================
+*/
+
+body.dark-mode td {
+
+    color: #d1d5db;
+
+    border-bottom-color: #374151;
+
+}
+
+
+body.dark-mode tbody tr {
+
+    background: #1f2937;
+
+}
+
+
+body.dark-mode tbody tr:nth-child(even) {
+
+    background: #243244;
+
+}
+
+
+body.dark-mode tbody tr:hover {
+
+    background: #263f32;
+
+}
+
+
+/*
+==========================================================
+DARK MODE - TOMBOL DASHBOARD
+==========================================================
+*/
+
+body.dark-mode .dashboard {
+
+    background:
+        linear-gradient(
+            135deg,
+            #166534,
+            #15803d
+        );
+
+    color: white;
+
+}
+
+
+/*
+==========================================================
+DARK MODE - THEME BUTTON
+==========================================================
+*/
+
+body.dark-mode .theme-toggle {
+
+    background: #1f2937;
+
+    color: white;
+
+    border-color: #374151;
+
+}
+
+
+body.dark-mode .theme-toggle:hover {
+
+    background: #374151;
+
+    border-color: #4b5563;
+
+}
+
+
+/*
+==========================================================
+DARK MODE - STATUS
+==========================================================
+*/
+
+body.dark-mode .status-belum {
+
+    background: #3f3217;
+
+    color: #fcd34d;
+
+}
+
+
+body.dark-mode .status-lunas {
+
+    background: #163222;
+
+    color: #86efac;
+
+}
+
+
+body.dark-mode .status-tidak-ada {
+
+    background: #374151;
+
+    color: #d1d5db;
+
+}
+
+
+/*
+==========================================================
+DARK MODE - FOOTER
+==========================================================
+*/
+
+body.dark-mode .footer {
+
+    color: #64748b;
+
+}
+
+
+/*
+==========================================================
+TRANSISI TEMA
+==========================================================
+*/
+
+body,
+.header,
+.table-box,
+tbody tr,
+td,
+.dashboard,
+.theme-toggle,
+.footer {
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+
+}
+
+
+/*
+==========================================================
+MOBILE
+==========================================================
+*/
+
+@media (max-width: 600px) {
+
+    .menu {
+
+        justify-content: stretch;
+
+        width: 100%;
+
+    }
+
+
+    .menu .dashboard {
+
+        flex: 1;
+
+    }
+
+
+    .theme-toggle {
+
+        width: 42px;
+
+        min-width: 42px;
+
+        height: 40px;
+
+    }
+
 }

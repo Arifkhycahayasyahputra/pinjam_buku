@@ -1,0 +1,605 @@
+/* =========================================================
+   RESET
+========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* =========================================================
+   WARNA (LIGHT) - dark mode cukup mengganti variabel
+========================================================= */
+body {
+    --text:          #183b2a;
+    --title:         #14532d;
+    --label:         #334155;
+    --muted:         #64748b;
+    --surface:       rgba(255, 255, 255, 0.97);
+    --form-bg:       #ffffff;
+    --border:        #dcefe3;
+    --divider:       #e5f1e9;
+    --input-bg:      #f8fcf9;
+    --input-border:  #d9e8df;
+    --input-hover:   #a7dcb7;
+    --input-text:    #1e293b;
+    --ro-bg:         #f0fdf4;
+    --ro-border:     #cdebd7;
+    --ro-text:       #166534;
+    --bad:           #dc2626;
+    --bad-bg:        #fff1f2;
+    --bad-border:    #fecdd3;
+    --shadow:        rgba(22, 101, 52, 0.12);
+
+    color-scheme: light;
+}
+
+body.dark-mode {
+    --text:          #e5e7eb;
+    --title:         #bbf7d0;
+    --label:         #cbd5e1;
+    --muted:         #94a3b8;
+    --surface:       rgba(16, 26, 20, 0.97);
+    --form-bg:       #101a14;
+    --border:        #263c30;
+    --divider:       #263c30;
+    --input-bg:      #142119;
+    --input-border:  #304637;
+    --input-hover:   #3d5a45;
+    --input-text:    #e5e7eb;
+    --ro-bg:         #102219;
+    --ro-border:     #28543a;
+    --ro-text:       #86efac;
+    --bad:           #fda4af;
+    --bad-bg:        #2a1519;
+    --bad-border:    #5c2931;
+    --shadow:        rgba(0, 0, 0, 0.40);
+
+    color-scheme: dark;
+}
+
+/* =========================================================
+   BODY
+========================================================= */
+body {
+    min-height: 100vh;
+    padding: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 8% 12%, rgba(134, 239, 172, 0.28), transparent 24%),
+        radial-gradient(circle at 92% 88%, rgba(74, 222, 128, 0.18), transparent 28%),
+        linear-gradient(135deg, #effdf4 0%, #f8fafc 52%, #ecfdf5 100%);
+}
+
+body.dark-mode {
+    background:
+        radial-gradient(circle at 8% 12%, rgba(34, 197, 94, 0.08), transparent 24%),
+        radial-gradient(circle at 92% 88%, rgba(34, 197, 94, 0.05), transparent 28%),
+        linear-gradient(135deg, #07130d 0%, #0b1711 52%, #0d1b14 100%);
+}
+
+/* dekorasi latar */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+body::before {
+    width: 320px;
+    height: 320px;
+    top: -150px;
+    right: -110px;
+    background: radial-gradient(circle, rgba(187, 247, 208, 0.45), transparent 70%);
+}
+
+body::after {
+    width: 260px;
+    height: 260px;
+    bottom: -130px;
+    left: -100px;
+    background: radial-gradient(circle, rgba(134, 239, 172, 0.30), transparent 70%);
+}
+
+body.dark-mode::before { background: radial-gradient(circle, rgba(34, 197, 94, 0.06), transparent 70%); }
+body.dark-mode::after  { background: radial-gradient(circle, rgba(34, 197, 94, 0.05), transparent 70%); }
+
+/* =========================================================
+   KARTU UTAMA (panel kiri + form)
+========================================================= */
+.container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 880px;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    box-shadow:
+        0 30px 70px var(--shadow),
+        0 8px 25px rgba(15, 23, 42, 0.05);
+    animation: cardEnter .5s ease both;
+}
+
+@keyframes cardEnter {
+    from { opacity: 0; transform: translateY(20px) scale(.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* =========================================================
+   PANEL KIRI (hijau)
+========================================================= */
+.form-side {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 48px 38px;
+    color: #ffffff;
+    background: linear-gradient(150deg, #166534 0%, #15803d 55%, #22c55e 100%);
+}
+
+body.dark-mode .form-side {
+    background: linear-gradient(150deg, #0f3d24 0%, #124d2b 55%, #15803d 100%);
+}
+
+/* lingkaran dekorasi */
+.form-side::before {
+    content: "";
+    position: absolute;
+    top: -110px;
+    right: -110px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.form-side-icon {
+    position: relative;
+    z-index: 1;
+    width: 96px;
+    height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: 46px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 28px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode .form-side-icon {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.form-side h2 {
+    position: relative;
+    z-index: 1;
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 750;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+}
+
+.form-side p {
+    position: relative;
+    z-index: 1;
+    max-width: 30ch;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+.form-main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 44px 46px;
+    background: var(--form-bg);
+    border-left: 1px solid var(--divider);
+}
+
+.form-title {
+    margin-bottom: 4px;
+    color: var(--title);
+    font-size: 19px;
+    font-weight: 750;
+    letter-spacing: -0.2px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.field label {
+    color: var(--label);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+/* petunjuk kecil di bawah baris stok/jumlah */
+.field-hint {
+    margin-top: -8px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* =========================================================
+   INPUT
+========================================================= */
+.field input {
+    width: 100%;
+    height: 46px;
+    padding: 0 14px;
+    color: var(--input-text);
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 11px;
+    outline: none;
+    font-size: 14px;
+    transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+}
+
+.field input:hover {
+    border-color: var(--input-hover);
+}
+
+.field input:focus {
+    border-color: #22c55e;
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.10);
+}
+
+.field input[readonly] {
+    color: var(--ro-text);
+    background: var(--ro-bg);
+    border-color: var(--ro-border);
+    font-weight: 650;
+    cursor: default;
+}
+
+.field input[readonly]:hover,
+.field input[readonly]:focus {
+    border-color: var(--ro-border);
+    box-shadow: none;
+}
+
+.field input[type="date"] {
+    cursor: pointer;
+}
+
+.field input:invalid:not(:placeholder-shown):not(:focus) {
+    border-color: #fca5a5;
+}
+
+/* =========================================================
+   TOMBOL
+========================================================= */
+.form-actions {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.btn-batal,
+.btn-submit {
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 11px 17px;
+    border-radius: 11px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .25s ease, box-shadow .25s ease, background .25s ease,
+                color .25s ease, border-color .25s ease;
+}
+
+/* Batal */
+.btn-batal {
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--input-border);
+}
+
+.btn-batal:hover {
+    color: var(--bad);
+    background: var(--bad-bg);
+    border-color: var(--bad-border);
+}
+
+/* Ajukan */
+.btn-submit {
+    color: #ffffff;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border: 1px solid #16a34a;
+    box-shadow: 0 8px 18px rgba(34, 197, 94, 0.18);
+}
+
+.btn-submit::before {
+    content: "✓";
+    font-size: 15px;
+}
+
+body.dark-mode .btn-submit {
+    background: linear-gradient(135deg, #22c55e, #15803d);
+    box-shadow: 0 8px 18px rgba(34, 197, 94, 0.12);
+}
+
+.btn-submit:hover {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(22, 163, 74, 0.25);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+.btn-submit:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-batal:focus-visible,
+.btn-submit:focus-visible,
+.theme-toggle:focus-visible {
+    outline: 3px solid rgba(34, 197, 94, 0.45);
+    outline-offset: 2px;
+}
+
+/* =========================================================
+   TOMBOL TEMA
+========================================================= */
+.theme-toggle {
+    position: fixed;
+    top: 22px;
+    right: 22px;
+    z-index: 9999;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: #166534;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #bbf7d0;
+    border-radius: 13px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 8px 22px rgba(22, 101, 52, 0.12);
+    transition: background .25s ease, color .25s ease, border-color .25s ease,
+                transform .25s ease, box-shadow .25s ease;
+}
+
+.theme-toggle:hover {
+    color: #ffffff;
+    background: linear-gradient(135deg, #22c55e, #15803d);
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(22, 101, 52, 0.20);
+}
+
+body.dark-mode .theme-toggle {
+    color: #fef08a;
+    background: #1c2a20;
+    border-color: #3b513f;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.30);
+}
+
+body.dark-mode .theme-toggle:hover {
+    color: #ffffff;
+    background: linear-gradient(135deg, #22c55e, #15803d);
+    border-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* =========================================================
+   TABLET (panel hijau pindah ke atas)
+========================================================= */
+@media (max-width: 800px) {
+
+    body {
+        padding: 75px 25px 25px;
+        align-items: flex-start;
+    }
+
+    .container {
+        max-width: 600px;
+        grid-template-columns: 1fr;
+        border-radius: 24px;
+    }
+
+    .form-side {
+        gap: 8px;
+        padding: 30px 130px 30px 30px;
+        min-height: 135px;
+    }
+
+    .form-side-icon {
+        position: absolute;
+        top: 50%;
+        right: 30px;
+        width: 80px;
+        height: 80px;
+        margin: 0;
+        font-size: 38px;
+        border-radius: 22px;
+        transform: translateY(-50%);
+    }
+
+    .form-side h2 {
+        font-size: 23px;
+    }
+
+    .form-side p {
+        font-size: 12px;
+    }
+
+    .form-main {
+        padding: 30px;
+        border-left: none;
+        border-top: 1px solid var(--divider);
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+@media (max-width: 550px) {
+
+    body {
+        padding: 65px 15px 15px;
+    }
+
+    .container {
+        border-radius: 20px;
+    }
+
+    .form-side {
+        padding: 25px 100px 25px 22px;
+        min-height: 120px;
+    }
+
+    .form-side-icon {
+        right: 20px;
+        width: 62px;
+        height: 62px;
+        font-size: 29px;
+        border-radius: 17px;
+    }
+
+    .form-side h2 {
+        font-size: 20px;
+    }
+
+    .form-side p {
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+    .form-main {
+        gap: 14px;
+        padding: 25px 22px;
+    }
+
+    .form-title {
+        font-size: 16px;
+    }
+
+    .field label {
+        font-size: 11px;
+    }
+
+    .field input {
+        height: 44px;
+        font-size: 13px;
+    }
+
+    .btn-batal,
+    .btn-submit {
+        min-height: 44px;
+        font-size: 12px;
+    }
+
+    .theme-toggle {
+        top: 14px;
+        right: 14px;
+        width: 41px;
+        height: 41px;
+        border-radius: 11px;
+        font-size: 17px;
+    }
+}
+
+/* =========================================================
+   MOBILE SANGAT KECIL
+========================================================= */
+@media (max-width: 380px) {
+
+    body {
+        padding: 60px 10px 10px;
+    }
+
+    .form-side {
+        padding: 22px 80px 22px 18px;
+    }
+
+    .form-side-icon {
+        right: 16px;
+        width: 54px;
+        height: 54px;
+        font-size: 25px;
+        border-radius: 15px;
+    }
+
+    .form-side h2 {
+        font-size: 18px;
+    }
+
+    .form-main {
+        padding: 22px 18px;
+    }
+
+    .field-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+    }
+}

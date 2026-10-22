@@ -1,0 +1,783 @@
+/* =========================================================
+   VERIFIKASI PINJAMAN - STYLE
+   Tema hijau tetap. Warna light/dark diatur lewat variabel,
+   jadi dark mode cukup menimpa nilai variabel di bawah.
+========================================================= */
+
+
+/* =========================================================
+   VARIABEL WARNA
+========================================================= */
+
+:root {
+    --page-bg:
+        radial-gradient(circle at 8% 12%, rgba(134, 239, 172, 0.28), transparent 24%),
+        radial-gradient(circle at 92% 88%, rgba(74, 222, 128, 0.18), transparent 28%),
+        linear-gradient(135deg, #effdf4 0%, #f8fafc 52%, #ecfdf5 100%);
+
+    --text: #183b2a;
+
+    /* kartu */
+    --card-bg: rgba(255, 255, 255, 0.97);
+    --card-border: #dcefe3;
+    --card-shadow:
+        0 30px 70px rgba(22, 101, 52, 0.12),
+        0 8px 25px rgba(15, 23, 42, 0.05);
+
+    /* header hijau */
+    --header-bg: linear-gradient(145deg, #166534 0%, #15803d 55%, #22c55e 100%);
+    --header-title: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.14);
+    --glass-border: rgba(255, 255, 255, 0.25);
+    --glass-hover-bg: rgba(255, 255, 255, 0.24);
+    --glass-hover-border: rgba(255, 255, 255, 0.45);
+
+    /* isi */
+    --desc: #64748b;
+    --divider: #e7f2ea;
+
+    /* kotak informasi */
+    --info-bg: linear-gradient(135deg, #f0fdf4, #f8fcf9);
+    --info-border: #dcefe3;
+    --info-accent: #22c55e;
+    --info-shadow: 0 7px 18px rgba(22, 101, 52, 0.05);
+    --info-text: #334155;
+    --info-strong: #14532d;
+    --info-line: #e1efe5;
+
+    /* form */
+    --form-title: #14532d;
+    --label: #334155;
+    --input-text: #334155;
+    --input-bg: #f8fcf9;
+    --input-bg-hover: #fcfffd;
+    --input-bg-focus: #ffffff;
+    --input-border: #d9e8df;
+    --input-border-hover: #a7dcb7;
+
+    /* tombol batal */
+    --batal-text: #475569;
+    --batal-bg: #f1f5f9;
+    --batal-border: #e2e8f0;
+    --batal-hover-text: #334155;
+    --batal-hover-bg: #e2e8f0;
+}
+
+body.dark-mode {
+    color-scheme: dark;
+
+    --page-bg:
+        radial-gradient(circle at 8% 12%, rgba(34, 197, 94, 0.10), transparent 25%),
+        radial-gradient(circle at 92% 88%, rgba(22, 163, 74, 0.08), transparent 30%),
+        linear-gradient(135deg, #0f172a 0%, #111827 52%, #0f1f19 100%);
+
+    --text: #e5e7eb;
+
+    --card-bg: rgba(17, 24, 39, 0.97);
+    --card-border: #374151;
+    --card-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.35),
+        0 8px 25px rgba(0, 0, 0, 0.20);
+
+    --glass-bg: rgba(17, 24, 39, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.20);
+    --glass-hover-bg: rgba(55, 65, 81, 0.65);
+    --glass-hover-border: rgba(255, 255, 255, 0.35);
+
+    --desc: #9ca3af;
+    --divider: #374151;
+
+    --info-bg: linear-gradient(135deg, #172a20, #1f2937);
+    --info-border: #374151;
+    --info-shadow: 0 7px 18px rgba(0, 0, 0, 0.18);
+    --info-text: #d1d5db;
+    --info-strong: #86efac;
+    --info-line: #2b3646;
+
+    --form-title: #86efac;
+    --label: #d1d5db;
+    --input-text: #e5e7eb;
+    --input-bg: #111827;
+    --input-bg-hover: #172033;
+    --input-bg-focus: #111827;
+    --input-border: #374151;
+    --input-border-hover: #4b5563;
+
+    --batal-text: #d1d5db;
+    --batal-bg: #111827;
+    --batal-border: #374151;
+    --batal-hover-text: #ffffff;
+    --batal-hover-bg: #1f2937;
+}
+
+
+/* =========================================================
+   RESET & BODY
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    padding: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--text);
+    background: var(--page-bg);
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   KARTU UTAMA
+   Baris 1 : header hijau (tombol tema | judul | ikon)
+   Baris 2 : deskripsi
+   Baris 3 : form
+   Header ikut jadi item grid, jadi tingginya menyesuaikan
+   judul otomatis dan tidak ada yang saling menimpa.
+========================================================= */
+
+.container {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 620px;
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto auto;
+
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 28px;
+    box-shadow: var(--card-shadow);
+
+    overflow: hidden;
+
+    animation: cardEnter 0.6s ease;
+}
+
+/* latar header hijau */
+.container::before {
+    content: "";
+
+    grid-column: 1 / -1;
+    grid-row: 1;
+
+    background: var(--header-bg);
+
+    z-index: 0;
+}
+
+/* ikon centang */
+.container::after {
+    content: "✓";
+
+    grid-column: 3;
+    grid-row: 1;
+
+    align-self: center;
+
+    width: 58px;
+    height: 58px;
+
+    margin-right: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 17px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+    font-size: 28px;
+    font-weight: 700;
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADER: TOMBOL TEMA & JUDUL
+========================================================= */
+
+.theme-toggle {
+    grid-column: 1;
+    grid-row: 1;
+
+    align-self: center;
+
+    width: 45px;
+    height: 45px;
+
+    margin-left: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    color: #ffffff;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+
+    font-size: 19px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    z-index: 2;
+
+    backdrop-filter: blur(8px);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px) rotate(-5deg);
+
+    background: var(--glass-hover-bg);
+    border-color: var(--glass-hover-border);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.theme-toggle:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.55);
+    outline-offset: 2px;
+}
+
+.container > h2 {
+    grid-column: 2;
+    grid-row: 1;
+
+    z-index: 2;
+
+    padding: 26px 16px 26px 16px;
+
+    color: var(--header-title);
+
+    font-size: 27px;
+    font-weight: 750;
+    line-height: 1.25;
+    letter-spacing: -0.4px;
+}
+
+.container > h2::after {
+    content: "";
+
+    display: block;
+
+    width: 42px;
+    height: 4px;
+
+    margin-top: 11px;
+
+    border-radius: 20px;
+
+    background: #86efac;
+}
+
+
+/* =========================================================
+   DESKRIPSI
+========================================================= */
+
+.container > p {
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    padding: 24px 30px 22px;
+
+    color: var(--desc);
+
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.container form {
+    grid-column: 1 / -1;
+    grid-row: 3;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    padding: 0 30px 32px;
+}
+
+.container form::before {
+    content: "Verifikasi Peminjaman";
+
+    margin-bottom: 4px;
+    padding-bottom: 13px;
+
+    color: var(--form-title);
+
+    border-bottom: 1px solid var(--divider);
+
+    font-size: 17px;
+    font-weight: 750;
+}
+
+
+/* =========================================================
+   KOTAK INFORMASI
+========================================================= */
+
+.info-box {
+    padding: 8px 20px;
+
+    background: var(--info-bg);
+    border: 1px solid var(--info-border);
+    border-left: 4px solid var(--info-accent);
+    border-radius: 14px;
+    box-shadow: var(--info-shadow);
+}
+
+.info-box p {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+
+    padding: 10px 0;
+
+    color: var(--info-text);
+
+    font-size: 13px;
+    line-height: 1.55;
+    font-weight: 500;
+    text-align: right;
+
+    overflow-wrap: anywhere;
+}
+
+.info-box p + p {
+    border-top: 1px solid var(--info-line);
+}
+
+.info-box strong {
+    flex-shrink: 0;
+
+    color: var(--info-strong);
+
+    font-weight: 750;
+    text-align: left;
+}
+
+
+/* =========================================================
+   INPUT TANGGAL
+========================================================= */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.field-label {
+    color: var(--label);
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.field {
+    width: 100%;
+    height: 47px;
+
+    padding: 0 14px;
+
+    color: var(--input-text);
+    background: var(--input-bg);
+
+    border: 1px solid var(--input-border);
+    border-radius: 11px;
+
+    outline: none;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.field:hover {
+    border-color: var(--input-border-hover);
+    background: var(--input-bg-hover);
+}
+
+.field:focus {
+    border-color: #22c55e;
+    background: var(--input-bg-focus);
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.10);
+}
+
+
+/* =========================================================
+   AKSI (BATAL & KONFIRMASI)
+========================================================= */
+
+.aksi {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 12px;
+
+    margin-top: 4px;
+    padding-top: 20px;
+
+    border-top: 1px solid var(--divider);
+}
+
+.btn {
+    min-height: 47px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 12px 18px;
+
+    border: none;
+    border-radius: 11px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn:focus-visible {
+    outline: 3px solid rgba(34, 197, 94, 0.30);
+    outline-offset: 2px;
+}
+
+/* batal */
+.btn-batal {
+    color: var(--batal-text);
+    background: var(--batal-bg);
+    border: 1px solid var(--batal-border);
+}
+
+.btn-batal::before {
+    content: "←";
+
+    font-size: 16px;
+}
+
+.btn-batal:hover {
+    color: var(--batal-hover-text);
+    background: var(--batal-hover-bg);
+    box-shadow: 0 7px 15px rgba(15, 23, 42, 0.07);
+}
+
+/* konfirmasi */
+.btn-simpan {
+    color: #ffffff;
+    background: linear-gradient(135deg, #22c55e, #15803d);
+    border: 1px solid #16a34a;
+    box-shadow: 0 9px 20px rgba(22, 163, 74, 0.20);
+}
+
+.btn-simpan::before {
+    content: "✓";
+
+    font-size: 15px;
+}
+
+.btn-simpan:hover {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+    box-shadow: 0 13px 27px rgba(22, 163, 74, 0.27);
+}
+
+
+/* =========================================================
+   ANIMASI
+========================================================= */
+
+@keyframes cardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .container {
+        animation: none;
+    }
+
+    * {
+        transition: none !important;
+    }
+}
+
+
+/* =========================================================
+   TABLET (<= 650px)
+========================================================= */
+
+@media (max-width: 650px) {
+
+    body {
+        padding: 25px 18px;
+    }
+
+    .container {
+        max-width: 580px;
+
+        border-radius: 24px;
+    }
+
+    .container::after {
+        width: 54px;
+        height: 54px;
+
+        margin-right: 25px;
+
+        border-radius: 15px;
+
+        font-size: 25px;
+    }
+
+    .theme-toggle {
+        width: 42px;
+        height: 42px;
+
+        margin-left: 25px;
+
+        border-radius: 13px;
+
+        font-size: 18px;
+    }
+
+    .container > h2 {
+        padding: 24px 14px;
+
+        font-size: 25px;
+    }
+
+    .container > p {
+        padding: 22px 25px 20px;
+    }
+
+    .container form {
+        padding: 0 25px 28px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE (<= 480px)
+========================================================= */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 15px 10px;
+    }
+
+    .container {
+        border-radius: 20px;
+    }
+
+    .container::after {
+        width: 49px;
+        height: 49px;
+
+        margin-right: 20px;
+
+        border-radius: 14px;
+
+        font-size: 22px;
+    }
+
+    .theme-toggle {
+        width: 38px;
+        height: 38px;
+
+        margin-left: 20px;
+
+        border-radius: 11px;
+
+        font-size: 16px;
+    }
+
+    .container > h2 {
+        padding: 22px 12px;
+
+        font-size: 22px;
+    }
+
+    .container > h2::after {
+        width: 36px;
+        height: 3px;
+
+        margin-top: 9px;
+    }
+
+    .container > p {
+        padding: 20px 20px 18px;
+
+        font-size: 11px;
+    }
+
+    .container form {
+        gap: 14px;
+
+        padding: 0 20px 23px;
+    }
+
+    .container form::before {
+        padding-bottom: 11px;
+
+        font-size: 15px;
+    }
+
+    .info-box {
+        padding: 6px 16px;
+
+        border-radius: 12px;
+    }
+
+    .info-box p {
+        padding: 9px 0;
+
+        font-size: 11px;
+    }
+
+    .field-label {
+        font-size: 11px;
+    }
+
+    .field {
+        height: 44px;
+
+        padding: 0 12px;
+
+        font-size: 12px;
+    }
+
+    .aksi {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    /* konfirmasi di atas, batal di bawah */
+    .btn-simpan {
+        order: -1;
+    }
+
+    .btn {
+        width: 100%;
+        min-height: 44px;
+
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   HP KECIL (<= 340px)
+========================================================= */
+
+@media (max-width: 340px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .container::after {
+        width: 44px;
+        height: 44px;
+
+        margin-right: 16px;
+
+        border-radius: 13px;
+
+        font-size: 19px;
+    }
+
+    .theme-toggle {
+        width: 35px;
+        height: 35px;
+
+        margin-left: 16px;
+
+        border-radius: 10px;
+
+        font-size: 15px;
+    }
+
+    .container > h2 {
+        padding: 20px 10px;
+
+        font-size: 20px;
+    }
+
+    .container > p {
+        padding: 18px 17px 16px;
+    }
+
+    .container form {
+        padding: 0 17px 20px;
+    }
+
+    .info-box {
+        padding: 5px 14px;
+    }
+}

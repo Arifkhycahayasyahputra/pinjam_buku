@@ -1,0 +1,88 @@
+RewriteEngine On
+
+# =========================================================
+# ROOT PROJECT
+# =========================================================
+
+RewriteBase /pinjam_buku/
+
+
+# =========================================================
+# HAPUS .PHP DARI URL VIEWS SAJA
+# JANGAN BERLAKU UNTUK CONTROLLERS
+# =========================================================
+
+RewriteCond %{THE_REQUEST} \s/+pinjam_buku/views/(.+?)\.php[\s?] [NC]
+RewriteRule ^views/(.+?)\.php$ /pinjam_buku/$1 [R=301,L,NE]
+
+
+# =========================================================
+# HALAMAN USER
+# =========================================================
+
+RewriteRule ^dashboard/?$ views/v_dasbord_user.php [L,QSA]
+
+RewriteRule ^buku/?$ views/v_pinjam_user.php [L,QSA]
+
+RewriteRule ^dipinjam/?$ views/sedang_dipinjam.php [L,QSA]
+
+RewriteRule ^riwayat/?$ views/v_riwayat_user.php [L,QSA]
+
+RewriteRule ^denda/?$ views/v_denda_user.php [L,QSA]
+
+RewriteRule ^denda/bayar/?$ views/v_bayar_denda.php [L,QSA]
+
+RewriteRule ^pinjam/?$ views/v_from_peminjaman.php [L,QSA]
+
+RewriteRule ^daftar/?$ views/v_form_pendaftaran.php [L,QSA]
+
+# =========================================================
+# HALAMAN ADMIN
+# =========================================================
+
+RewriteRule ^admin/?$ views/v_dasbord_admin.php [L,QSA]
+
+RewriteRule ^admin/buku/?$ views/v_admin_buku.php [L,QSA]
+
+RewriteRule ^admin/buku/tambah/?$ views/v_tambah_buku.php [L,QSA]
+
+RewriteRule ^admin/buku/edit/?$ views/v_edit_buku.php [L,QSA]
+
+RewriteRule ^admin/user/?$ views/v_data_user.php [L,QSA]
+
+RewriteRule ^admin/user/tambah/?$ views/v_tambah_pengguna.php [L,QSA]
+
+RewriteRule ^admin/user/edit/?$ views/v_edit_pengguna.php [L,QSA]
+
+RewriteRule ^admin/pengajuan/?$ views/verif_admin.php [L,QSA]
+
+RewriteRule ^admin/riwayat/?$ views/v_riwayat_peminjaman_buku.php [L,QSA]
+
+RewriteRule ^admin/denda/?$ views/v_form_denda.php [L,QSA]
+
+RewriteRule ^admin/verif/?$ views/verifikasi.php [L,QSA]
+
+# =========================================================
+# PENDAFTARAN
+# =========================================================
+
+RewriteRule ^register/?$ views/v_form_pendaftaran.php [L,QSA]
+
+
+# =========================================================
+# JANGAN GANGGU FILE/FOLDER ASLI
+# =========================================================
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+
+# =========================================================
+# URL TANPA .PHP
+# =========================================================
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/pinjam_buku/$1.php -f
+RewriteRule ^(.+?)/?$ $1.php [L,QSA]

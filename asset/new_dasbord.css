@@ -1,0 +1,601 @@
+/* =========================================================
+   RESET
+========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* =========================================================
+   BODY
+========================================================= */
+body {
+    min-height: 100vh;
+    color: #183b2a;
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 5% 5%, rgba(134, 239, 172, 0.18), transparent 24%),
+        radial-gradient(circle at 95% 95%, rgba(74, 222, 128, 0.12), transparent 28%),
+        linear-gradient(135deg, #f0fdf4 0%, #f8fafc 48%, #ecfdf5 100%);
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid #dcfce7;
+    box-shadow: 0 8px 25px rgba(22, 101, 52, 0.06);
+    backdrop-filter: blur(15px);
+}
+
+.menu {
+    width: 92%;
+    max-width: 1180px;
+    min-height: 72px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #14532d;
+    font-size: 20px;
+    font-weight: 750;
+    letter-spacing: -0.4px;
+}
+
+.menu-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu-right a {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 0 15px;
+    color: #166534;
+    background: #f0fdf4;
+    border: 1px solid #dcfce7;
+    border-radius: 11px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.menu-right a:hover {
+    color: #ffffff;
+    background: #166534;
+    border-color: #166534;
+}
+
+/* =========================================================
+   TOMBOL TEMA
+========================================================= */
+.theme-toggle {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: #334155;
+    background: #ffffff;
+    border: 1px solid #dcfce7;
+    border-radius: 50%;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.10);
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+.container {
+    width: 92%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 30px 0 35px;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+.hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    width: 100%;
+    min-height: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 38px 42px;
+    margin-bottom: 28px;
+    color: #ffffff;
+    background: linear-gradient(125deg, #14532d 0%, #166534 48%, #22c55e 100%);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(22, 101, 52, 0.17);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -190px;
+    right: -130px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.hero::after {
+    content: "📚";
+    position: absolute;
+    right: 6%;
+    top: 50%;
+    width: 88px;
+    height: 88px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 39px;
+    border-radius: 23px;
+    background: rgba(255, 255, 255, 0.11);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    transform: translateY(-50%) rotate(4deg);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.07);
+}
+
+.hero h1 {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: clamp(27px, 3vw, 36px);
+    font-weight: 750;
+    line-height: 1.2;
+    letter-spacing: -0.7px;
+}
+
+.hero p {
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   GRID  (2 x 2, semua kartu sama tinggi)
+========================================================= */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+    gap: 20px;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+.card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 230px;
+    padding: 26px 26px 24px 30px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid #e1eee5;
+    border-radius: 19px;
+    box-shadow: 0 10px 27px rgba(15, 23, 42, 0.045);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+/* lingkaran dekorasi pojok */
+.card::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #f0fdf4;
+}
+
+/* garis hijau kiri */
+.card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #22c55e, #15803d);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: #bbf7d0;
+    box-shadow: 0 16px 32px rgba(22, 101, 52, 0.09);
+}
+
+.card-icon {
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 22px;
+    background: #ecfdf5;
+    border: 1px solid #dcfce7;
+    border-radius: 12px;
+}
+
+.card h3 {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 8px;
+    color: #14532d;
+    font-size: 17px;
+    font-weight: 750;
+    line-height: 1.3;
+}
+
+.card p {
+    position: relative;
+    z-index: 2;
+    max-width: 44ch;
+    margin-bottom: 20px;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* tombol selalu menempel di bawah kartu */
+.card-button {
+    position: relative;
+    z-index: 2;
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 15px;
+    color: #166534;
+    background: #f0fdf4;
+    border: 1px solid #dcfce7;
+    border-radius: 9px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    transition: background .25s ease, color .25s ease, border-color .25s ease;
+}
+
+.card-button:hover {
+    color: #ffffff;
+    background: #166534;
+    border-color: #166534;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.footer {
+    width: 100%;
+    margin-top: 35px;
+    padding: 20px 10px 0;
+    color: #64748b;
+    text-align: center;
+    font-size: 12px;
+    border-top: 1px solid #dcfce7;
+}
+
+/* =========================================================
+   ANIMASI MASUK (sekali saat halaman dibuka)
+========================================================= */
+.hero,
+.card {
+    animation: fadeUp .45s ease both;
+}
+
+.card:nth-child(2) { animation-delay: .05s; }
+.card:nth-child(3) { animation-delay: .10s; }
+.card:nth-child(4) { animation-delay: .15s; }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   FOKUS KEYBOARD & REDUCED MOTION
+========================================================= */
+.card-button:focus-visible,
+.menu-right a:focus-visible,
+.theme-toggle:focus-visible {
+    outline: 3px solid #22c55e;
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+@media (max-width: 850px) {
+
+    .hero {
+        padding: 32px;
+    }
+
+    .hero::after {
+        right: 5%;
+    }
+
+    .hero h1,
+    .hero p {
+        max-width: 72%;
+    }
+
+    .grid {
+        gap: 16px;
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+@media (max-width: 650px) {
+
+    .navbar {
+        position: relative;
+    }
+
+    .menu {
+        min-height: 65px;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .menu-right a {
+        height: 34px;
+        padding: 0 11px;
+        font-size: 11px;
+    }
+
+    .theme-toggle {
+        width: 34px;
+        height: 34px;
+        font-size: 15px;
+    }
+
+    .container {
+        padding: 23px 0 25px;
+    }
+
+    .hero {
+        min-height: 205px;
+        padding: 28px 23px;
+        margin-bottom: 22px;
+        border-radius: 19px;
+    }
+
+    .hero h1 {
+        max-width: 75%;
+        font-size: 25px;
+    }
+
+    .hero p {
+        max-width: 72%;
+        font-size: 12px;
+    }
+
+    .hero::after {
+        top: auto;
+        bottom: 18px;
+        right: 16px;
+        width: 65px;
+        height: 65px;
+        font-size: 28px;
+        border-radius: 17px;
+        transform: rotate(4deg);
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        gap: 14px;
+    }
+
+    .card {
+        min-height: 0;
+        padding: 22px 21px 21px 25px;
+        border-radius: 16px;
+    }
+
+    .footer {
+        margin-top: 28px;
+        font-size: 11px;
+    }
+}
+
+/* =========================================================
+   MOBILE SANGAT KECIL
+========================================================= */
+@media (max-width: 380px) {
+
+    .logo {
+        font-size: 15px;
+    }
+
+    .menu-right a {
+        padding: 0 9px;
+        font-size: 10px;
+    }
+
+    .hero {
+        padding: 25px 20px;
+    }
+
+    .hero h1 {
+        font-size: 22px;
+    }
+
+    .hero p {
+        font-size: 11px;
+    }
+
+    .hero::after {
+        width: 55px;
+        height: 55px;
+        font-size: 23px;
+    }
+
+    .card {
+        padding: 19px 18px 18px 22px;
+    }
+}
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+body.dark-mode {
+    color: #e2e8f0;
+    background:
+        radial-gradient(circle at 5% 5%, rgba(34, 197, 94, 0.08), transparent 24%),
+        radial-gradient(circle at 95% 95%, rgba(34, 197, 94, 0.06), transparent 28%),
+        linear-gradient(135deg, #020617 0%, #0f172a 50%, #111827 100%);
+}
+
+body.dark-mode .navbar {
+    background: rgba(15, 23, 42, 0.94);
+    border-bottom-color: #1e293b;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.30);
+}
+
+body.dark-mode .logo {
+    color: #bbf7d0;
+}
+
+body.dark-mode .menu-right a {
+    color: #86efac;
+    background: #172a1f;
+    border-color: #245c38;
+}
+
+body.dark-mode .menu-right a:hover {
+    color: #ffffff;
+    background: #166534;
+    border-color: #166534;
+}
+
+body.dark-mode .theme-toggle {
+    color: #ffffff;
+    background: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.30);
+}
+
+body.dark-mode .hero {
+    background: linear-gradient(125deg, #052e16 0%, #14532d 48%, #166534 100%);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-mode .hero::before {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .hero::after {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.10);
+}
+
+body.dark-mode .card {
+    background: #111827;
+    border-color: #263244;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.30);
+}
+
+body.dark-mode .card::before {
+    background: #172a1f;
+}
+
+body.dark-mode .card:hover {
+    border-color: #166534;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.40);
+}
+
+body.dark-mode .card-icon {
+    background: #172a1f;
+    border-color: #245c38;
+}
+
+body.dark-mode .card h3 {
+    color: #bbf7d0;
+}
+
+body.dark-mode .card p {
+    color: #94a3b8;
+}
+
+body.dark-mode .card-button {
+    color: #86efac;
+    background: #172a1f;
+    border-color: #245c38;
+}
+
+body.dark-mode .card-button:hover {
+    color: #ffffff;
+    background: #166534;
+    border-color: #166534;
+}
+
+body.dark-mode .footer {
+    color: #64748b;
+    border-top-color: #263244;
+}
+
+/* transisi pergantian tema */
+body,
+.navbar,
+.menu-right a,
+.theme-toggle,
+.footer {
+    transition: background .35s ease, border-color .35s ease, color .35s ease, box-shadow .35s ease;
+}

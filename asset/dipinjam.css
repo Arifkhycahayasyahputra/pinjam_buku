@@ -1,168 +1,1474 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
-body{
-    background:linear-gradient(135deg,#e0f2fe,#f8fafc);
-    min-height:100vh;
-    padding:30px;
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+    min-height: 100vh;
+
+    color: #183b2a;
+
+    background:
+        radial-gradient(
+            circle at 8% 8%,
+            rgba(134, 239, 172, 0.32),
+            transparent 24%
+        ),
+        radial-gradient(
+            circle at 92% 90%,
+            rgba(74, 222, 128, 0.20),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #effdf4 0%,
+            #f8fafc 48%,
+            #ecfdf5 100%
+        );
+
+    overflow-x: hidden;
 }
 
-/* CONTAINER */
-.container{
-    max-width:1100px;
-    margin:auto;
-    background:white;
-    padding:30px;
-    border-radius:25px;
-    box-shadow:0 15px 35px rgba(0,0,0,0.1);
-    animation:fadeIn .6s ease;
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container {
+    width: min(1500px, calc(100% - 70px));
+
+    min-height: calc(100vh - 70px);
+
+    margin: 35px auto;
+
+    padding: 0;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border: 1px solid #dff1e5;
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 30px 70px rgba(22, 101, 52, 0.10),
+        0 5px 20px rgba(15, 23, 42, 0.04);
+
+    overflow: hidden;
+
+    animation: pageIn .55s ease;
 }
 
-/* ANIMATION */
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
 
-/* HEADER */
-.header{
-    margin-bottom:25px;
-}
+/* =========================================================
+   ANIMATION
+========================================================= */
 
-.header h2{
-    color:#1e293b;
-    margin-bottom:5px;
-}
+@keyframes pageIn {
 
-.header p{
-    color:#64748b;
-    margin-bottom:15px;
-}
-
-/* BACK BUTTON */
-.back-btn{
-    display:inline-block;
-    padding:10px 16px;
-    border-radius:12px;
-    background:#e2e8f0;
-    color:#1e293b;
-    text-decoration:none;
-    font-weight:600;
-    transition:.3s;
-}
-
-.back-btn:hover{
-    background:#cbd5f5;
-    transform:translateY(-2px);
-}
-
-/* TABLE BOX */
-.table-box{
-    overflow-x:auto;
-}
-
-/* TABLE */
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:10px;
-}
-
-/* HEAD */
-thead{
-    background:#f1f5f9;
-}
-
-th{
-    padding:12px;
-    text-align:left;
-    font-size:14px;
-    color:#334155;
-}
-
-/* BODY */
-td{
-    padding:12px;
-    border-top:1px solid #e2e8f0;
-    font-size:14px;
-    color:#1e293b;
-}
-
-/* ROW HOVER */
-tbody tr:hover{
-    background:#f8fafc;
-}
-
-/* STATUS BADGE */
-.status{
-    padding:6px 12px;
-    border-radius:999px;
-    font-size:12px;
-    font-weight:600;
-}
-
-/* DIPINJAM */
-.pinjam{
-    background:#fef3c7;
-    color:#92400e;
-}
-
-/* DIKEMBALIKAN */
-.kembali{
-    background:#dcfce7;
-    color:#166534;
-}
-
-/* BUTTON KEMBALI */
-.btn-kembali{
-    padding:8px 12px;
-    border-radius:10px;
-    background:linear-gradient(135deg,#2563eb,#1d4ed8);
-    color:white;
-    text-decoration:none;
-    font-size:13px;
-    font-weight:600;
-    transition:.3s;
-    display:inline-block;
-    box-shadow:0 6px 15px rgba(37,99,235,0.3);
-}
-
-.btn-kembali:hover{
-    transform:translateY(-2px);
-    box-shadow:0 10px 20px rgba(37,99,235,0.4);
-}
-
-/* EMPTY STATE */
-.empty{
-    text-align:center;
-    color:#64748b;
-    padding:20px;
-    font-style:italic;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-    .container{
-        padding:20px;
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
 
-    th, td{
-        font-size:13px;
-        padding:10px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   HEADER AREA
+========================================================= */
+
+.header {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) auto;
+
+    align-items: center;
+
+    column-gap: 40px;
+
+    padding: 42px 48px 38px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f0fdf4 100%
+        );
+
+    border-bottom: 1px solid #e3f1e8;
+}
+
+
+/* =========================================================
+   HEADER DECORATION
+========================================================= */
+
+.header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    right: -120px;
+    top: -170px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(74, 222, 128, 0.20),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADER LEFT
+========================================================= */
+
+.header h2 {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    color: #14532d;
+
+    font-size: 32px;
+
+    line-height: 1.2;
+
+    font-weight: 750;
+
+    letter-spacing: -0.8px;
+}
+
+
+/* =========================================================
+   HEADER ICON
+========================================================= */
+
+.header h2::before {
+    content: "📚";
+
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #dcfce7,
+            #bbf7d0
+        );
+
+    border: 1px solid #bbf7d0;
+
+    border-radius: 16px;
+
+    font-size: 25px;
+
+    box-shadow:
+        0 9px 22px rgba(34, 197, 94, 0.14);
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.header p {
+    position: relative;
+
+    max-width: 760px;
+
+    margin-top: 13px;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   BACK BUTTON AREA
+========================================================= */
+
+.back-btn {
+    position: relative;
+    z-index: 5;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    min-width: 125px;
+
+    padding: 12px 18px;
+
+    color: #15803d;
+
+    background: #ffffff;
+
+    border: 1px solid #bbf7d0;
+
+    border-radius: 13px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 650;
+
+    box-shadow:
+        0 7px 18px rgba(22, 101, 52, 0.07);
+
+    transition: all .25s ease;
+}
+
+
+.back-btn::before {
+    content: "←";
+
+    font-size: 17px;
+}
+
+
+.back-btn:hover {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #16a34a
+        );
+
+    border-color: #22c55e;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(34, 197, 94, 0.22);
+}
+
+
+/* =========================================================
+   TABLE SECTION
+========================================================= */
+
+.table-box {
+    width: calc(100% - 96px);
+
+    margin: 32px auto 42px;
+
+    background: #ffffff;
+
+    border: 1px solid #e3eee7;
+
+    border-radius: 20px;
+
+    overflow-x: auto;
+
+    box-shadow:
+        0 12px 30px rgba(15, 23, 42, 0.045);
+}
+
+
+/* =========================================================
+   TABLE SCROLLBAR
+========================================================= */
+
+.table-box::-webkit-scrollbar {
+    height: 7px;
+}
+
+
+.table-box::-webkit-scrollbar-track {
+    background: #f0fdf4;
+
+    border-radius: 20px;
+}
+
+
+.table-box::-webkit-scrollbar-thumb {
+    background: #a7e9bc;
+
+    border-radius: 20px;
+}
+
+
+.table-box::-webkit-scrollbar-thumb:hover {
+    background: #4ade80;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+table {
+    width: 100%;
+
+    min-width: 900px;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+thead {
+    background:
+        linear-gradient(
+            135deg,
+            #166534,
+            #15803d
+        );
+}
+
+
+th {
+    padding: 18px 21px;
+
+    color: #ffffff;
+
+    text-align: left;
+
+    font-size: 13px;
+
+    font-weight: 650;
+
+    letter-spacing: .2px;
+
+    white-space: nowrap;
+
+    border: none;
+}
+
+
+th:first-child {
+    border-top-left-radius: 19px;
+}
+
+
+th:last-child {
+    border-top-right-radius: 19px;
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+td {
+    padding: 18px 21px;
+
+    color: #334155;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+
+    vertical-align: middle;
+
+    border-top: 1px solid #edf3ef;
+}
+
+
+/* =========================================================
+   ROW
+========================================================= */
+
+tbody tr {
+    background: #ffffff;
+
+    transition:
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+
+tbody tr:nth-child(even) {
+    background: #fbfefc;
+}
+
+
+tbody tr:hover {
+    background: #f0fdf4;
+}
+
+
+/* =========================================================
+   FIRST DATA COLUMN
+========================================================= */
+
+td:first-child {
+    color: #14532d;
+
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   BOOK / TITLE
+========================================================= */
+
+td:nth-child(2) {
+    color: #14532d;
+
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   OTHER INFORMATION
+========================================================= */
+
+td:nth-child(3) {
+    color: #64748b;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 105px;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    letter-spacing: .15px;
+}
+
+
+/* =========================================================
+   DIPINJAM
+========================================================= */
+
+.pinjam {
+    color: #c2410c;
+
+    background: #fff7ed;
+
+    border: 1px solid #fed7aa;
+
+    box-shadow:
+        0 4px 10px rgba(234, 88, 12, 0.05);
+}
+
+
+/* =========================================================
+   DIKEMBALIKAN
+========================================================= */
+
+.kembali {
+    color: #15803d;
+
+    background: #ecfdf5;
+
+    border: 1px solid #bbf7d0;
+
+    box-shadow:
+        0 4px 10px rgba(34, 197, 94, 0.06);
+}
+
+
+/* =========================================================
+   RETURN BUTTON
+========================================================= */
+
+.btn-kembali {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    min-width: 110px;
+
+    padding: 10px 15px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #16a34a
+        );
+
+    border-radius: 11px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 650;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 7px 16px rgba(34, 197, 94, 0.18);
+
+    transition: all .25s ease;
+}
+
+
+.btn-kembali::before {
+    content: "↩";
+
+    font-size: 15px;
+}
+
+
+.btn-kembali:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #16a34a,
+            #15803d
+        );
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 11px 23px rgba(22, 163, 74, 0.25);
+}
+
+
+.btn-kembali:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty {
+    padding: 60px 20px;
+
+    color: #64748b;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    font-style: italic;
+
+    background: #fbfefc;
+}
+
+
+.empty::before {
+    content: "📖";
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-size: 40px;
+
+    font-style: normal;
+
+    opacity: .65;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1400px) {
+
+    .container {
+        width: calc(100% - 90px);
     }
 
-    .btn-kembali{
-        font-size:12px;
-        padding:6px 10px;
+    .header {
+        padding: 48px 55px 42px;
     }
+
+    .table-box {
+        width: calc(100% - 110px);
+
+        margin-top: 38px;
+    }
+
+    th,
+    td {
+        padding: 19px 23px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .container {
+        width: calc(100% - 40px);
+
+        margin: 20px auto;
+    }
+
+
+    .header {
+        grid-template-columns: 1fr;
+
+        row-gap: 22px;
+
+        padding: 32px;
+    }
+
+
+    .back-btn {
+        width: fit-content;
+    }
+
+
+    .header h2 {
+        font-size: 28px;
+    }
+
+
+    .header p {
+        max-width: 100%;
+    }
+
+
+    .table-box {
+        width: calc(100% - 64px);
+
+        margin-top: 27px;
+    }
+
+
+    th,
+    td {
+        padding: 14px 16px;
+
+        font-size: 13px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    body {
+        background:
+            linear-gradient(
+                160deg,
+                #effdf4,
+                #f8fafc
+            );
+    }
+
+
+    .container {
+        width: calc(100% - 20px);
+
+        min-height: calc(100vh - 20px);
+
+        margin: 10px auto;
+
+        border-radius: 21px;
+    }
+
+
+    /* Header menjadi satu kolom */
+
+    .header {
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 0;
+
+        padding: 25px 20px 23px;
+    }
+
+
+    .header h2 {
+        width: 100%;
+
+        gap: 10px;
+
+        font-size: 23px;
+
+        line-height: 1.25;
+    }
+
+
+    .header h2::before {
+        width: 43px;
+        height: 43px;
+
+        border-radius: 12px;
+
+        font-size: 19px;
+    }
+
+
+    .header p {
+        width: 100%;
+
+        margin-top: 11px;
+
+        margin-bottom: 19px;
+
+        font-size: 12px;
+
+        line-height: 1.65;
+    }
+
+
+    /* Tombol benar-benar di bawah teks */
+
+    .back-btn {
+        width: 100%;
+
+        padding: 11px 15px;
+
+        font-size: 12px;
+    }
+
+
+    .table-box {
+        width: calc(100% - 30px);
+
+        margin: 20px auto 25px;
+
+        border-radius: 15px;
+    }
+
+
+    table {
+        min-width: 760px;
+    }
+
+
+    th {
+        padding: 13px 14px;
+
+        font-size: 11px;
+    }
+
+
+    td {
+        padding: 13px 14px;
+
+        font-size: 12px;
+    }
+
+
+    .status {
+        min-width: 82px;
+
+        padding: 6px 10px;
+
+        font-size: 10px;
+    }
+
+
+    .btn-kembali {
+        min-width: 90px;
+
+        padding: 8px 10px;
+
+        font-size: 11px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .container {
+        width: calc(100% - 12px);
+    }
+
+
+    .header {
+        padding: 22px 16px;
+    }
+
+
+    .header h2 {
+        font-size: 21px;
+    }
+
+
+    .header h2::before {
+        width: 39px;
+        height: 39px;
+
+        font-size: 17px;
+    }
+
+
+    .header p {
+        font-size: 12px;
+    }
+
+
+    .table-box {
+        width: calc(100% - 20px);
+    }
+
+}
+
+/* =========================================================
+   HEADER CONTENT
+========================================================= */
+
+.header-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   HEADER ACTIONS
+========================================================= */
+
+.header-actions {
+
+    position: relative;
+
+    z-index: 5;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+}
+
+
+/* =========================================================
+   THEME BUTTON
+========================================================= */
+
+.theme-toggle {
+
+    width: 46px;
+    height: 46px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    color: #166534;
+
+    background: #ffffff;
+
+    border: 1px solid #bbf7d0;
+
+    border-radius: 13px;
+
+    font-size: 19px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 18px rgba(22, 101, 52, 0.07);
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.theme-toggle:hover {
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #16a34a
+        );
+
+    border-color: #22c55e;
+
+    transform:
+        translateY(-3px)
+        rotate(3deg);
+
+    box-shadow:
+        0 11px 23px rgba(34, 197, 94, 0.22);
+}
+
+
+/* =========================================================
+   DARK MODE - BODY
+========================================================= */
+
+body.dark-mode {
+
+    color: #e5e7eb;
+
+    background:
+        radial-gradient(
+            circle at 8% 8%,
+            rgba(34, 197, 94, 0.08),
+            transparent 24%
+        ),
+
+        radial-gradient(
+            circle at 92% 90%,
+            rgba(34, 197, 94, 0.05),
+            transparent 28%
+        ),
+
+        linear-gradient(
+            135deg,
+            #07130d 0%,
+            #0b1711 48%,
+            #0d1b14 100%
+        );
+}
+
+
+/* =========================================================
+   DARK MODE - DECORATION
+========================================================= */
+
+body.dark-mode::before {
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(34, 197, 94, 0.06),
+            transparent 70%
+        );
+}
+
+
+body.dark-mode::after {
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(34, 197, 94, 0.05),
+            transparent 70%
+        );
+}
+
+
+/* =========================================================
+   DARK MODE - CONTAINER
+========================================================= */
+
+body.dark-mode .container {
+
+    background:
+        rgba(16, 26, 20, 0.97);
+
+    border-color:
+        #263c30;
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.40),
+        0 5px 20px rgba(0, 0, 0, 0.20);
+}
+
+
+/* =========================================================
+   DARK MODE - HEADER
+========================================================= */
+
+body.dark-mode .header {
+
+    background:
+        linear-gradient(
+            135deg,
+            #101a14 0%,
+            #122018 100%
+        );
+
+    border-bottom-color:
+        #263c30;
+}
+
+
+body.dark-mode .header::before {
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(34, 197, 94, 0.08),
+            transparent 70%
+        );
+}
+
+
+body.dark-mode .header h2 {
+
+    color:
+        #bbf7d0;
+}
+
+
+body.dark-mode .header p {
+
+    color:
+        #94a3b8;
+}
+
+
+/* =========================================================
+   DARK MODE - HEADER ICON
+========================================================= */
+
+body.dark-mode .header h2::before {
+
+    background:
+        linear-gradient(
+            145deg,
+            #173021,
+            #1d3a27
+        );
+
+    border-color:
+        #28543a;
+
+    box-shadow:
+        0 9px 22px rgba(0, 0, 0, 0.20);
+}
+
+
+/* =========================================================
+   DARK MODE - BACK BUTTON
+========================================================= */
+
+body.dark-mode .back-btn {
+
+    color:
+        #86efac;
+
+    background:
+        #122219;
+
+    border-color:
+        #28543a;
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.20);
+}
+
+
+body.dark-mode .back-btn:hover {
+
+    color:
+        #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #16a34a
+        );
+
+    border-color:
+        #22c55e;
+}
+
+
+/* =========================================================
+   DARK MODE - THEME BUTTON
+========================================================= */
+
+body.dark-mode .theme-toggle {
+
+    color:
+        #fef08a;
+
+    background:
+        #1c2a20;
+
+    border-color:
+        #3b513f;
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.25);
+}
+
+
+body.dark-mode .theme-toggle:hover {
+
+    color:
+        #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #15803d
+        );
+
+    border-color:
+        transparent;
+}
+
+
+/* =========================================================
+   DARK MODE - TABLE BOX
+========================================================= */
+
+body.dark-mode .table-box {
+
+    background:
+        #101a14;
+
+    border-color:
+        #263c30;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.30);
+}
+
+
+/* =========================================================
+   DARK MODE - SCROLLBAR
+========================================================= */
+
+body.dark-mode .table-box::-webkit-scrollbar-track {
+
+    background:
+        #142119;
+}
+
+
+body.dark-mode .table-box::-webkit-scrollbar-thumb {
+
+    background:
+        #28543a;
+}
+
+
+body.dark-mode .table-box::-webkit-scrollbar-thumb:hover {
+
+    background:
+        #22c55e;
+}
+
+
+/* =========================================================
+   DARK MODE - TABLE HEADER
+========================================================= */
+
+body.dark-mode thead {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f3d24,
+            #14532d
+        );
+}
+
+
+/* =========================================================
+   DARK MODE - TABLE DATA
+========================================================= */
+
+body.dark-mode td {
+
+    color:
+        #cbd5e1;
+
+    border-top-color:
+        #26352c;
+}
+
+
+/* =========================================================
+   DARK MODE - ROW
+========================================================= */
+
+body.dark-mode tbody tr {
+
+    background:
+        #101a14;
+}
+
+
+body.dark-mode tbody tr:nth-child(even) {
+
+    background:
+        #0e1812;
+}
+
+
+body.dark-mode tbody tr:hover {
+
+    background:
+        #14291c;
+}
+
+
+/* =========================================================
+   DARK MODE - FIRST COLUMN
+========================================================= */
+
+body.dark-mode td:first-child {
+
+    color:
+        #86efac;
+}
+
+
+/* =========================================================
+   DARK MODE - BOOK TITLE
+========================================================= */
+
+body.dark-mode td:nth-child(2) {
+
+    color:
+        #bbf7d0;
+}
+
+
+/* =========================================================
+   DARK MODE - OTHER INFORMATION
+========================================================= */
+
+body.dark-mode td:nth-child(3) {
+
+    color:
+        #94a3b8;
+}
+
+
+/* =========================================================
+   DARK MODE - STATUS DIPINJAM
+========================================================= */
+
+body.dark-mode .pinjam {
+
+    color:
+        #fdba74;
+
+    background:
+        #2a1d10;
+
+    border-color:
+        #5a3a18;
+
+    box-shadow:
+        none;
+}
+
+
+/* =========================================================
+   DARK MODE - STATUS DIKEMBALIKAN
+========================================================= */
+
+body.dark-mode .kembali {
+
+    color:
+        #86efac;
+
+    background:
+        #10291a;
+
+    border-color:
+        #28543a;
+
+    box-shadow:
+        none;
+}
+
+
+/* =========================================================
+   DARK MODE - RETURN BUTTON
+========================================================= */
+
+body.dark-mode .btn-kembali {
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #15803d
+        );
+
+    box-shadow:
+        0 7px 16px rgba(0, 0, 0, 0.25);
+}
+
+
+body.dark-mode .btn-kembali:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #16a34a,
+            #166534
+        );
+
+    box-shadow:
+        0 11px 23px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   DARK MODE - EMPTY
+========================================================= */
+
+body.dark-mode .empty {
+
+    color:
+        #94a3b8;
+
+    background:
+        #0e1812;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .header-actions {
+
+        width: 100%;
+
+        justify-content: flex-start;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .header-actions {
+
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns: 1fr 48px;
+
+        gap: 8px;
+    }
+
+
+    .back-btn {
+
+        width: 100%;
+    }
+
+
+    .theme-toggle {
+
+        width: 48px;
+        height: 44px;
+
+        border-radius: 11px;
+    }
+
+}
+
+
+@media (max-width: 380px) {
+
+    .header-actions {
+
+        grid-template-columns: 1fr 44px;
+    }
+
+
+    .theme-toggle {
+
+        width: 44px;
+        height: 42px;
+
+        font-size: 17px;
+    }
+
 }

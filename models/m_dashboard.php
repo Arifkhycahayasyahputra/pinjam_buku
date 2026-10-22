@@ -1,73 +1,194 @@
 <?php
+
 // Panggil koneksi database
 include_once "m_koneksi.php";
 
-class m_dashboard {
+
+class m_dashboard
+{
 
     // Variabel koneksi
     public $koneksi;
 
-    // Constructor (otomatis jalan saat class dipanggil)
-    function __construct(){
+
+    // Constructor
+    function __construct()
+    {
+
         $db = new m_koneksi();
+
         $this->koneksi = $db->koneksi;
     }
 
-    
-    function total_buku(){
 
-        // Hitung semua data buku
-        $sql = "SELECT COUNT(*) as total FROM buku";
+    /*
+    ==========================================================
+    TOTAL BUKU
+    ==========================================================
+    */
 
-        $q = mysqli_query($this->koneksi,$sql);
+    function total_buku()
+    {
 
-        // Ambil hasil jumlah
-        return mysqli_fetch_assoc($q)['total'];
+        $sql = "SELECT COUNT(*) AS total
+                FROM buku";
+
+        $q = mysqli_query(
+            $this->koneksi,
+            $sql
+        );
+
+
+        if (!$q) {
+
+            die(
+                "Error total buku: "
+                . mysqli_error($this->koneksi)
+            );
+        }
+
+
+        $data = mysqli_fetch_assoc($q);
+
+        return $data['total'];
     }
 
-    
-    function total_user(){
 
-        // Hitung user dengan role 'user'
-        $sql = "SELECT COUNT(*) as total FROM pengguna WHERE role='user'";
+    /*
+    ==========================================================
+    TOTAL USER
+    ==========================================================
+    */
 
-        $q = mysqli_query($this->koneksi,$sql);
+    function total_user()
+    {
 
-        return mysqli_fetch_assoc($q)['total'];
+        $sql = "SELECT COUNT(*) AS total
+                FROM pengguna
+                WHERE role='user'";
+
+        $q = mysqli_query(
+            $this->koneksi,
+            $sql
+        );
+
+
+        if (!$q) {
+
+            die(
+                "Error total user: "
+                . mysqli_error($this->koneksi)
+            );
+        }
+
+
+        $data = mysqli_fetch_assoc($q);
+
+        return $data['total'];
     }
 
 
-    function total_pending(){
+    /*
+    ==========================================================
+    TOTAL PENDING
+    ==========================================================
+    */
 
-        // Hitung pengajuan pinjam yang masih pending
-        $sql = "SELECT COUNT(*) as total FROM pinjam WHERE status='pending'";
+    function total_pending()
+    {
 
-        $q = mysqli_query($this->koneksi,$sql);
+        $sql = "SELECT COUNT(*) AS total
+                FROM pinjam
+                WHERE status='pending'";
 
-        return mysqli_fetch_assoc($q)['total'];
+        $q = mysqli_query(
+            $this->koneksi,
+            $sql
+        );
+
+
+        if (!$q) {
+
+            die(
+                "Error total pending: "
+                . mysqli_error($this->koneksi)
+            );
+        }
+
+
+        $data = mysqli_fetch_assoc($q);
+
+        return $data['total'];
     }
 
-    
-    function total_pinjam(){
 
-        // Hitung buku yang sedang dipinjam
-        $sql = "SELECT COUNT(*) as total FROM pinjam WHERE status='dipinjam'";
+    /*
+    ==========================================================
+    TOTAL SEDANG DIPINJAM
+    ==========================================================
+    */
 
-        $q = mysqli_query($this->koneksi,$sql);
+    function total_pinjam()
+    {
 
-        return mysqli_fetch_assoc($q)['total'];
+        $sql = "SELECT COUNT(*) AS total
+                FROM pinjam
+                WHERE status='dipinjam'";
+
+        $q = mysqli_query(
+            $this->koneksi,
+            $sql
+        );
+
+
+        if (!$q) {
+
+            die(
+                "Error total pinjam: "
+                . mysqli_error($this->koneksi)
+            );
+        }
+
+
+        $data = mysqli_fetch_assoc($q);
+
+        return $data['total'];
     }
 
-    
-    function total_kembali(){
 
-        // Hitung buku yang sudah dikembalikan
-        $sql = "SELECT COUNT(*) as total FROM pinjam WHERE status='dikembalikan'";
+    /*
+    ==========================================================
+    TOTAL DIKEMBALIKAN
+    ==========================================================
+    */
 
-        $q = mysqli_query($this->koneksi,$sql);
+    function total_kembali()
+    {
 
-        return mysqli_fetch_assoc($q)['total'];
+        $sql = "SELECT COUNT(*) AS total
+                FROM pinjam
+                WHERE status='dikembalikan'";
+
+        $q = mysqli_query(
+            $this->koneksi,
+            $sql
+        );
+
+
+        if (!$q) {
+
+            die(
+                "Error total kembali: "
+                . mysqli_error($this->koneksi)
+            );
+        }
+
+
+        $data = mysqli_fetch_assoc($q);
+
+        return $data['total'];
     }
 
 }
+
 ?>
